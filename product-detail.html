@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-assets-path="assets/" data-layout-path="free-landing-page/" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Product Detail | Grova Export</title>
+
+    <meta name="description" content="Product detail page" />
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&ampdisplay=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="assets/dist/libs/flatpickr/dist/flatpickr.css" />
+    <link rel="stylesheet" href="assets/dist/css/output.css" />
+
+    <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggleBtn = document.getElementById('mobileMenuToggle');
+    const menu = document.getElementById('navbar-block-4');
+
+    if (toggleBtn && menu) {
+      let backdrop = null;
+      const isMobile = () => window.innerWidth < 1024;
+
+      function syncIcons(open) {
+        const icons = toggleBtn.querySelectorAll('span');
+        if (icons.length >= 2) {
+          icons[0].classList.toggle('hidden', open);
+          icons[1].classList.toggle('hidden', !open);
+        }
+        toggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+
+      function closeMenu() {
+        menu.classList.remove('mobile-open');
+        if (isMobile()) {
+          menu.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+        if (backdrop) {
+          backdrop.remove();
+          backdrop = null;
+        }
+        syncIcons(false);
+      }
+
+      function openMenu() {
+        if (!isMobile()) return;
+        menu.classList.remove('hidden');
+        menu.classList.add('mobile-open');
+        document.body.style.overflow = 'hidden';
+        if (!backdrop) {
+          backdrop = document.createElement('div');
+          backdrop.className = 'mobile-menu-backdrop';
+          backdrop.addEventListener('click', closeMenu);
+          document.body.appendChild(backdrop);
+        }
+        syncIcons(true);
+      }
+
+      toggleBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const isOpen = menu.classList.contains('mobile-open');
+        if (isOpen) closeMenu();
+        else openMenu();
+      });
+
+      menu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (isMobile()) closeMenu();
+        });
+      });
+
+      window.addEventListener('resize', function () {
+        if (!isMobile()) {
+          menu.classList.remove('hidden', 'mobile-open');
+          document.body.style.overflow = '';
+          if (backdrop) {
+            backdrop.remove();
+            backdrop = null;
+          }
+          syncIcons(false);
+        } else if (!menu.classList.contains('mobile-open')) {
+          menu.classList.add('hidden');
+          syncIcons(false);
+        }
+      });
+
+      if (isMobile()) {
+        menu.classList.add('hidden');
+        syncIcons(false);
+      }
+    }
+
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const productCards = document.querySelectorAll('.product-card');
+
+    categoryButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        const filter = button.getAttribute('data-filter');
+
+        categoryButtons.forEach(function (btn) {
+          btn.classList.remove('is-active');
+        });
+
+        button.classList.add('is-active');
+
+        productCards.forEach(function (card) {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
+
+    <style>
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    background: #ead8c9;
+  }
+
+  .products-page {
+    background: #ead8c9;
+  }
+
+  .products-wrap {
+    display: grid;
+    grid-template-columns: 290px minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .products-sidebar {
+    background: #f3f3f3;
+    padding: 1.5rem;
+  }
+
+  .products-sidebar-title {
+    font-size: 2rem;
+    line-height: 1.2;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #111;
+  }
+
+  .products-sidebar-line {
+    width: 42px;
+    height: 4px;
+    background: #d8d8d8;
+    margin-top: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .category-btn {
+    width: 100%;
+    display: block;
+    border: 1px solid #e6b48c;
+    border-radius: 14px;
+    background: transparent;
+    color: #b6541b;
+    text-align: left;
+    font-weight: 600;
+    padding: 1rem 1.25rem;
+    transition: 0.2s ease;
+  }
+
+  .category-btn:hover,
+  .category-btn.is-active {
+    background: #fff7f1;
+    border-color: #de9f6c;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .product-card {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .product-card-media {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #f5f5f5;
+  }
+
+  .product-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .product-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #ff6b00;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0.85rem 1rem;
+    border-bottom-left-radius: 14px;
+  }
+
+  .product-card-body {
+    padding: 1.25rem 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    flex: 1;
+  }
+
+  .product-card-category {
+    color: #ff8c42;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+    font-weight: 500;
+  }
+
+  .product-card-title {
+    color: #111;
+    font-size: 1.15rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.35;
+    margin: 0;
+  }
+
+  .product-card-desc {
+    color: #555;
+    font-size: 0.98rem;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .product-card-actions {
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+
+  .product-card-actions .btn {
+    width: 100%;
+  }
+
+  @media (max-width: 1199px) {
+    .products-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 991px) {
+    .products-wrap {
+      grid-template-columns: 1fr;
+    }
+
+    .products-sidebar {
+      padding: 1.25rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .products-sidebar-title {
+      font-size: 1.5rem;
+    }
+  }
+
+  .product-gallery-thumb.active {
+    border-color: #22c55e;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 1023px) {
+    header .navbar {
+      min-height: 88px;
+      align-items: center;
+    }
+
+    header .navbar-start {
+      width: 100%;
+      gap: 0.75rem;
+    }
+
+    header .navbar-start > a {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    header .navbar-start > a img {
+      width: 100% !important;
+      max-width: 220px;
+      height: 72px !important;
+      object-fit: contain !important;
+      object-position: left center !important;
+      display: block;
+    }
+
+    header .navbar-start .lg\:hidden {
+      flex: 0 0 auto;
+      gap: 0.5rem;
+    }
+
+    header .navbar-start .btn-success.btn-sm {
+      white-space: nowrap;
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+      font-size: 0.875rem;
+    }
+
+    #navbar-block-4 {
+      width: 100%;
+    }
+
+    #navbar-block-4.mobile-open {
+      display: block !important;
+      height: auto !important;
+      overflow: visible !important;
+      margin-top: 0.75rem;
+      padding: 1rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--color-base-100, #1f1b2d);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    #navbar-block-4.mobile-open .text-base-content {
+      gap: 0.25rem;
+      font-size: 1rem;
+    }
+
+    #navbar-block-4.mobile-open .nav-link {
+      display: block;
+      padding: 0.85rem 0.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    #navbar-block-4.mobile-open .nav-link:last-child {
+      border-bottom: none;
+    }
+
+    .mobile-menu-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 9;
+    }
+
+    header {
+      z-index: 30 !important;
+    }
+  }
+
+  @media (max-width: 767px) {
+    header .navbar {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    header .navbar-start {
+      align-items: flex-start;
+    }
+
+    header .navbar-start > a img {
+      max-width: 150px;
+      height: 54px !important;
+    }
+
+    header .navbar-start .btn-success.btn-sm {
+      font-size: 0.75rem;
+      padding-left: 0.65rem;
+      padding-right: 0.65rem;
+      height: 2.25rem;
+    }
+
+    .collapse-toggle {
+      width: 2.5rem !important;
+      height: 2.5rem !important;
+      flex: 0 0 2.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    header .navbar-start > a img {
+      max-width: 120px;
+      height: 48px !important;
+    }
+
+    header .navbar-start .btn-success.btn-sm {
+      font-size: 0.7rem;
+      padding-left: 0.55rem;
+      padding-right: 0.55rem;
+    }
+  }
+</style>
+<style>
+  .products-page {
+    background: #ead8c9;
+    padding-top: 160px;
+  }
+
+  @media (min-width: 768px) {
+    .products-page {
+      padding-top: 175px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .products-page {
+      padding-top: 150px;
+    }
+  }
+</style>
+    <script type="text/javascript">
+      (function () {
+        try {
+          const root = document.documentElement;
+          const layoutPath = root.getAttribute('data-layout-path')?.replace('/', '') || 'dashboard-default';
+          const localStorageKey = `${layoutPath}-theme`;
+
+          window.THEME_CONFIG = {
+            'free-landing-page': {
+              default: 'light',
+              light: 'light',
+              dark: 'dark',
+              system: { light: 'light', dark: 'dark' }
+            }
+          };
+
+          const getSystemPreference = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+          const resolveTheme = (selectedTheme, layoutPath) => {
+            const layoutConfig = window.THEME_CONFIG[layoutPath];
+            if (!layoutConfig) return selectedTheme === 'system' ? (getSystemPreference() ? 'dark' : 'light') : selectedTheme;
+
+            if (selectedTheme === 'system') {
+              const systemConfig = layoutConfig.system;
+              const prefersDark = getSystemPreference();
+              return prefersDark ? systemConfig.dark : systemConfig.light;
+            }
+
+            return layoutConfig[selectedTheme] || selectedTheme || layoutConfig.default || 'light';
+          };
+
+          const savedTheme = localStorage.getItem(localStorageKey) || 'system';
+          const resolvedTheme = resolveTheme(savedTheme, layoutPath);
+          root.setAttribute('data-theme', resolvedTheme);
+        } catch (e) {
+          console.warn('Early theme script error:', e);
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <div class="bg-base-100">
+      <!-- NAVBAR GIỮ Y NGUYÊN -->
+      <header class="border-base-content/20 bg-base-100 py-0.25 fixed top-0 z-10 w-full border-b">
+        <nav class="navbar mx-auto max-w-[1280px] rounded-b-xl px-4 sm:px-6 lg:px-8">
+          <div class="w-full lg:flex lg:items-center lg:gap-2">
+            <div class="navbar-start items-center justify-between max-lg:w-full">
+              <a class="text-base-content flex items-center gap-2 font-semibold" href="index.html">
+                <img
+                  src="assets/img/logo.png"
+                  alt="Grova Export"
+                  style="height: 110px; width: 320px; object-fit: contain; object-position: left center;" />
+              </a>
+
+              <div class="flex items-center gap-5 lg:hidden">
+                <a href="index.html#contact-us" class="btn btn-success btn-sm">Request a Quote</a>
+                <button
+                  id="mobileMenuToggle"
+                  type="button"
+                  class="collapse-toggle btn btn-outline btn-secondary btn-square"
+                  aria-controls="navbar-block-4"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation">
+                  <span class="icon-[tabler--menu-2] collapse-open:hidden size-5.5"></span>
+                  <span class="icon-[tabler--x] collapse-open:block size-5.5 hidden"></span>
+                </button>
+              </div>
+            </div>
+
+            <div id="navbar-block-4" class="lg:navbar-center transition-height collapse hidden grow overflow-hidden font-medium duration-300 lg:flex">
+              <div class="text-base-content flex gap-6 text-xl max-lg:mt-4 max-lg:flex-col lg:items-center">
+                <a href="index.html#home" class="hover:text-success nav-link">Home</a>
+                <a href="index.html#about-us" class="hover:text-success nav-link">About Us</a>
+                <a href="index.html#services" class="hover:text-success nav-link">Services</a>
+                <a href="index.html#products" class="text-success nav-link">Products</a>
+                <a href="index.html#documents" class="hover:text-success nav-link">Documents</a>
+                <a href="index.html#faqs" class="hover:text-success nav-link">FAQS</a>
+              </div>
+            </div>
+
+            <div class="navbar-end max-lg:hidden">
+              <a href="index.html#contact-us" class="btn btn-success">Request a Quote</a>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+  <main class="products-page">
+  <section class="py-8 sm:py-12 lg:py-16">
+    <div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+      <div class="products-wrap">
+        <!-- Sidebar -->
+        <aside class="products-sidebar">
+          <h2 class="products-sidebar-title">Product Categories</h2>
+          <div class="products-sidebar-line"></div>
+
+          <div class="space-y-4">
+            <button class="category-btn is-active" data-filter="all">All Products</button>
+            <button class="category-btn" data-filter="black">Black Charcoal</button>
+            <button class="category-btn" data-filter="white">White Charcoal</button>
+            <button class="category-btn" data-filter="other">Others Product</button>
+          </div>
+        </aside>
+
+        <!-- Grid -->
+        <div class="products-grid" id="productGrid">
+          <article class="product-card" data-category="other">
+            <div class="product-card-media">
+              <img src="assets/img/black-charcoal.png" alt="Shisha Charcoal" />
+              <span class="product-badge">Hot</span>
+            </div>
+            <div class="product-card-body">
+              <p class="product-card-category">Others Product</p>
+              <h3 class="product-card-title">Shisha Charcoal</h3>
+              <p class="product-card-desc">
+                Coconut charcoal is produced from natural coconut shells, an abundant raw material.
+              </p>
+              <div class="product-card-actions">
+                <a href="product-detail.html" class="btn btn-success">View Detail</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="other">
+            <div class="product-card-media">
+              <img src="assets/img/than gáo dừa.png" alt="Sawdust Charcoal" />
+              <span class="product-badge">Hot</span>
+            </div>
+            <div class="product-card-body">
+              <p class="product-card-category">Others Product</p>
+              <h3 class="product-card-title">Sawdust Charcoal</h3>
+              <p class="product-card-desc">
+                Sawdust charcoal is produced from sawdust collected from wood processing factories.
+              </p>
+              <div class="product-card-actions">
+                <a href="product-detail.html" class="btn btn-success">View Detail</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="white">
+            <div class="product-card-media">
+              <img src="assets/img/white-charcoal.png" alt="Lychee Charcoal" />
+              <span class="product-badge">Hot</span>
+            </div>
+            <div class="product-card-body">
+              <p class="product-card-category">White Charcoal</p>
+              <h3 class="product-card-title">Lychee Charcoal</h3>
+              <p class="product-card-desc">
+                Our lychee white charcoal is produced from high-quality lychee wood.
+              </p>
+              <div class="product-card-actions">
+                <a href="product-detail.html" class="btn btn-success">View Detail</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="black">
+            <div class="product-card-media">
+              <img src="assets/img/free-blog-1.png" alt="Mangrove Charcoal" />
+              <span class="product-badge">Hot</span>
+            </div>
+            <div class="product-card-body">
+              <p class="product-card-category">Black Charcoal</p>
+              <h3 class="product-card-title">Mangrove Charcoal</h3>
+              <p class="product-card-desc">
+                Vietnam eucalyptus charcoal is made from carefully selected hardwood.
+              </p>
+              <div class="product-card-actions">
+                <a href="product-detail.html" class="btn btn-success">View Detail</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="white">
+            <div class="product-card-media">
+              <img src="assets/img/free-blog-2.png" alt="Longan Charcoal" />
+              <span class="product-badge">Hot</span>
+            </div>
+            <div class="product-card-body">
+              <p class="product-card-category">White Charcoal</p>
+              <h3 class="product-card-title">Longan Charcoal</h3>
+              <p class="product-card-desc">
+                Our eucalyptus white charcoal is produced from carefully selected eucalyptus wood.
+              </p>
+              <div class="product-card-actions">
+                <a href="product-detail.html" class="btn btn-success">View Detail</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="white">
+            <div class="product-card-media">
+              <img src="assets/img/free-blog-3.png" alt="Mangrove White Charcoal" />
+              <span class="product-badge">Hot</span>
+            </div>
+            <div class="product-card-body">
+              <p class="product-card-category">White Charcoal</p>
+              <h3 class="product-card-title">Mangrove Charcoal</h3>
+              <p class="product-card-desc">
+                Our eucalyptus white charcoal is produced from carefully selected eucalyptus wood.
+              </p>
+              <div class="product-card-actions">
+                <a href="product-detail.html" class="btn btn-success">View Detail</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+      <footer>
+        <div class="mx-auto max-w-[1280px] px-4 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
+          <div class="flex items-center justify-between gap-3 max-md:flex-col">
+            <a href="index.html" class="text-base-content flex items-center gap-3 text-xl font-semibold">
+              <span>Grova Export</span>
+            </a>
+
+            <nav class="flex items-center gap-6">
+              <a href="index.html#about-us" class="link link-animated text-base-content/80 font-medium">About</a>
+              <a href="index.html#services" class="link link-animated text-base-content/80 font-medium">Services</a>
+              <a href="index.html#products" class="link link-animated text-base-content/80 font-medium">Products</a>
+              <a href="index.html#faqs" class="link link-animated text-base-content/80 font-medium">FAQ</a>
+            </nav>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="mx-auto max-w-[1280px] px-4 py-8 sm:px-6 lg:px-8">
+          <div class="text-base-content text-center text-base">
+            &copy;2025
+            <a href="index.html" class="text-success">Grova Export</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="assets/dist/libs/tailwindcss-intersect/dist/observer.min.js"></script>
+    <script src="assets/dist/libs/flatpickr/dist/flatpickr.js"></script>
+    <script src="assets/dist/libs/flyonui/flyonui.js"></script>
+    <script src="assets/dist/js/theme-utils.js"></script>
+    <script src="assets/dist/js/main.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const toggleBtn = document.getElementById('mobileMenuToggle');
+        const menu = document.getElementById('navbar-block-4');
+
+        if (toggleBtn && menu) {
+          let backdrop = null;
+          const isMobile = () => window.innerWidth < 1024;
+
+          function syncIcons(open) {
+            const icons = toggleBtn.querySelectorAll('span');
+            if (icons.length >= 2) {
+              icons[0].classList.toggle('hidden', open);
+              icons[1].classList.toggle('hidden', !open);
+            }
+            toggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          }
+
+          function closeMenu() {
+            menu.classList.remove('mobile-open');
+            if (isMobile()) {
+              menu.classList.add('hidden');
+              document.body.style.overflow = '';
+            }
+            if (backdrop) {
+              backdrop.remove();
+              backdrop = null;
+            }
+            syncIcons(false);
+          }
+
+          function openMenu() {
+            if (!isMobile()) return;
+            menu.classList.remove('hidden');
+            menu.classList.add('mobile-open');
+            document.body.style.overflow = 'hidden';
+            if (!backdrop) {
+              backdrop = document.createElement('div');
+              backdrop.className = 'mobile-menu-backdrop';
+              backdrop.addEventListener('click', closeMenu);
+              document.body.appendChild(backdrop);
+            }
+            syncIcons(true);
+          }
+
+          toggleBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const isOpen = menu.classList.contains('mobile-open');
+            if (isOpen) closeMenu();
+            else openMenu();
+          });
+
+          menu.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+              if (isMobile()) closeMenu();
+            });
+          });
+
+          window.addEventListener('resize', function () {
+            if (!isMobile()) {
+              menu.classList.remove('hidden', 'mobile-open');
+              document.body.style.overflow = '';
+              if (backdrop) {
+                backdrop.remove();
+                backdrop = null;
+              }
+              syncIcons(false);
+            } else if (!menu.classList.contains('mobile-open')) {
+              menu.classList.add('hidden');
+              syncIcons(false);
+            }
+          });
+
+          if (isMobile()) {
+            menu.classList.add('hidden');
+            syncIcons(false);
+          }
+        }
+
+        const mainImage = document.getElementById('mainProductImage');
+        const thumbs = document.querySelectorAll('.product-gallery-thumb');
+
+        thumbs.forEach(function (thumb) {
+          thumb.addEventListener('click', function () {
+            const newImage = thumb.getAttribute('data-image');
+            mainImage.src = newImage;
+
+            thumbs.forEach(function (item) {
+              item.classList.remove('active');
+            });
+
+            thumb.classList.add('active');
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

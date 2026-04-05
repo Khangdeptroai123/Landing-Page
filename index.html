@@ -1,6 +1,5 @@
 <!doctype html>
-
-<html lang="en" data-theme="light" data-assets-path="assets/" data-layout-path="free-landing-page/" dir="ltr" class="scroll-smooth">
+<html lang="en" data-theme="light" data-assets-path="assets/" data-layout-path="free-landing-page/" dir="ltr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
@@ -21,12 +20,164 @@
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="assets/dist/libs/flatpickr/dist/flatpickr.css" />
-
+    
     <!-- build:css -->
     <link rel="stylesheet" href="assets/dist/css/output.css" />
+    
+      <style>
+  html {
+    scroll-behavior: auto;
+  }
 
+  #about-us,
+  #services,
+  #documents,
+  #faqs,
+  #products,
+  #contact-us {
+    scroll-margin-top: 110px;
+  }
+
+  @media (max-width: 768px) {
+    #about-us,
+    #services,
+    #documents,
+    #faqs,
+    #products,
+    #contact-us {
+      scroll-margin-top: 90px;
+    }
+  }
+</style>
     <!-- Page CSS -->
+    <style id="mobile-fix-styles">
+  @media (max-width: 1023px) {
+    header .navbar {
+      min-height: 88px;
+      align-items: center;
+    }
 
+    header .navbar-start {
+      width: 100%;
+      gap: 0.75rem;
+    }
+
+    header .navbar-start > a {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    header .navbar-start > a img {
+      width: 100% !important;
+      max-width: 220px;
+      height: 72px !important;
+      object-fit: contain !important;
+      object-position: left center !important;
+      display: block;
+    }
+
+    header .navbar-start .lg\:hidden {
+      flex: 0 0 auto;
+      gap: 0.5rem;
+    }
+
+    header .navbar-start .btn-success.btn-sm {
+      white-space: nowrap;
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+      font-size: 0.875rem;
+    }
+
+    #navbar-block-4 {
+      width: 100%;
+    }
+
+    #navbar-block-4.mobile-open {
+      display: block !important;
+      height: auto !important;
+      overflow: visible !important;
+      margin-top: 0.75rem;
+      padding: 1rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--color-base-100, #1f1b2d);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    #navbar-block-4.mobile-open .text-base-content {
+      gap: 0.25rem;
+      font-size: 1rem;
+    }
+
+    #navbar-block-4.mobile-open .nav-link {
+      display: block;
+      padding: 0.85rem 0.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    #navbar-block-4.mobile-open .nav-link:last-child {
+      border-bottom: none;
+    }
+
+    .mobile-menu-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 9;
+    }
+
+    header {
+      z-index: 30 !important;
+    }
+  }
+
+  @media (max-width: 767px) {
+    header .navbar {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    header .navbar-start {
+      align-items: flex-start;
+    }
+
+    header .navbar-start > a img {
+      max-width: 150px;
+      height: 54px !important;
+    }
+
+    header .navbar-start .btn-success.btn-sm {
+      font-size: 0.75rem;
+      padding-left: 0.65rem;
+      padding-right: 0.65rem;
+      height: 2.25rem;
+    }
+
+    .collapse-toggle {
+      width: 2.5rem !important;
+      height: 2.5rem !important;
+      flex: 0 0 2.5rem;
+    }
+
+    #home .gap-18 {
+      padding-top: 7rem !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    header .navbar-start > a img {
+      max-width: 120px;
+      height: 48px !important;
+    }
+
+    header .navbar-start .btn-success.btn-sm {
+      font-size: 0.7rem;
+      padding-left: 0.55rem;
+      padding-right: 0.55rem;
+    }
+  }
+  
+</style>
     <!-- Theme JS -->
     <script type="text/javascript">
       (function () {
@@ -64,6 +215,7 @@
         }
       })();
     </script>
+
   </head>
 
   <body>
@@ -82,7 +234,13 @@
         </a>
         <div class="flex items-center gap-5 lg:hidden">
           <a href="#contact-us" class="btn btn-success btn-sm">Request a Quote</a>
-          <button type="button" class="collapse-toggle btn btn-outline btn-secondary btn-square" data-collapse="#navbar-block-4" aria-controls="navbar-block-4" aria-label="Toggle navigation">
+          <button
+              id="mobileMenuToggle"
+              type="button"
+              class="collapse-toggle btn btn-outline btn-secondary btn-square"
+              aria-controls="navbar-block-4"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
             <span class="icon-[tabler--menu-2] collapse-open:hidden size-5.5"></span>
             <span class="icon-[tabler--x] collapse-open:block size-5.5 hidden"></span>
           </button>
@@ -93,6 +251,7 @@
           <a href="#home" class="hover:text-success nav-link">Home</a>
           <a href="#about-us" class="hover:text-success nav-link">About Us</a>
           <a href="#services" class="hover:text-success nav-link">Services</a>
+          <a href="product-detail.html" class="hover:text-success nav-link">Products</a>
           <a href="#documents" class="hover:text-success nav-link">Documents</a>
           <a href="#faqs" class="hover:text-success nav-link">FAQS</a>
         </div>
@@ -139,7 +298,7 @@
           </div>
         </section>
         <!-- About us -->
-        <section id="about-us">
+        <section id="about-us" class="scroll-mt-32 md:scroll-mt-40">
           <div class="bg-base-200 py-8 sm:py-16 lg:py-24">
             <div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
               <div class="flex flex-col gap-12 md:gap-16 lg:gap-24">
@@ -275,7 +434,7 @@
           </div>
         </section>
         <!-- Blog Component -->
-        <section id="services">
+        <section id="services" class="scroll-mt-32 md:scroll-mt-40">
           <div class="bg-base-100 py-8 sm:py-16 lg:py-24">
             <div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
               <!-- Section Header -->
@@ -294,10 +453,10 @@
                     <h5 class="card-title text-xl">Buffet Service</h5>
                     <p class="mb-5">Navigate effortlessly with our intuitive design, optimized for all devices. Enjoy a seamless experience whether you're on a computer or mobile device.</p>
                     <div class="card-actions">
-                      <a href="#" class="btn btn-success btn-gradient">
-                        Read More
-                        <span class="icon-[tabler--arrow-right] size-5 rtl:rotate-180"></span>
-                      </a>
+                      <a href="product-detail.html" class="btn btn-success btn-gradient">
+  Read More
+  <span class="icon-[tabler--arrow-right] size-5 rtl:rotate-180"></span>
+</a>
                     </div>
                   </div>
                 </div>
@@ -310,10 +469,10 @@
                     <h5 class="card-title text-xl">Food delivery</h5>
                     <p class="mb-5">Enjoy a safe shopping experience with multiple payment options and SSL encryption. Your personal and financial information is always protected.</p>
                     <div class="card-actions">
-                      <a href="#" class="btn btn-success btn-gradient">
-                        Read More
-                        <span class="icon-[tabler--arrow-right] size-5 rtl:rotate-180"></span>
-                      </a>
+                      <a href="product-detail.html" class="btn btn-success btn-gradient">
+  Read More
+  <span class="icon-[tabler--arrow-right] size-5 rtl:rotate-180"></span>
+</a>
                     </div>
                   </div>
                 </div>
@@ -326,10 +485,10 @@
                     <h5 class="card-title text-xl">Cafeteria</h5>
                     <p class="mb-5">Find products quickly with advanced filters, sorting options, and suggestion. Save time and effortlessly locate exactly what you need with ease.</p>
                     <div class="card-actions">
-                      <a href="#" class="btn btn-success btn-gradient">
-                        Read More
-                        <span class="icon-[tabler--arrow-right] size-5 rtl:rotate-180"></span>
-                      </a>
+                     <a href="product-detail.html" class="btn btn-success btn-gradient">
+  Read More
+  <span class="icon-[tabler--arrow-right] size-5 rtl:rotate-180"></span>
+</a>
                     </div>
                   </div>
                 </div>
@@ -337,7 +496,7 @@
             </div>
           </div>
         </section>
-        
+
         <!-- Customer Reviews -->
         <div class="bg-base-200 py-8 sm:py-16 lg:py-24">
           <div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
@@ -504,39 +663,39 @@
         </div>
         <div class="via-primary/20 mx-auto h-px w-3/5 bg-gradient-to-r from-transparent to-transparent"></div>
         
-        <section id="documents" class="scroll-mt-48">
-          <div class="py-8 sm:py-16 lg:py-24" style="background-color:#e8d7cb;">
-            <div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
-              <div class="mb-14 text-center">
-              <div class="mb-16">
-                <h3 class="mb-8 text-center text-3xl font-bold text-black">
-                  Bill of Lading
-                </h3>
+        <section id="documents" class="scroll-mt-32 md:scroll-mt-40">
+  <div class="py-8 sm:py-16 lg:py-24" style="background-color:#423d4e;">
+    <div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+      <div class="mb-16 text-center">
+        <h3 class="mb-8 text-center text-3xl font-bold text-white">
+          Bill of Lading
+        </h3>
 
-                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                  <button type="button" class="doc-item overflow-hidden bg-white transition hover:scale-[1.02]" data-full="assets/img/bl-1.png">
-                    <img src="assets/img/bl-1.png" alt="Bill of Lading 1" class="h-[380px] w-full object-contain bg-white" />
-                  </button>
+        <div
+          id="billOfLadingGrid"
+          class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        </div>
+<br>
+           <div class="mt-10 flex items-center justify-center gap-6">
+  <button id="bolPrevBtn" type="button" class="btn btn-outline btn-success min-w-[110px]">
+    Prev
+  </button>
 
-                  <button type="button" class="doc-item overflow-hidden bg-white transition hover:scale-[1.02]" data-full="assets/img/bl-2.png">
-                    <img src="assets/img/bl-2.png" alt="Bill of Lading 2" class="h-[380px] w-full object-contain bg-white" />
-                  </button>
+  <span id="bolPageInfo" class="inline-block min-w-[80px] text-center text-xl font-semibold text-white">
+    1 / 2
+  </span>
 
-                  <button type="button" class="doc-item overflow-hidden bg-white transition hover:scale-[1.02]" data-full="assets/img/bl-3.png">
-                    <img src="assets/img/bl-3.png" alt="Bill of Lading 3" class="h-[380px] w-full object-contain bg-white" />
-                  </button>
-
-                  <button type="button" class="doc-item overflow-hidden bg-white transition hover:scale-[1.02]" data-full="assets/img/bl-4.png">
-                    <img src="assets/img/bl-4.png" alt="Bill of Lading 4" class="h-[380px] w-full object-contain bg-white" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+  <button id="bolNextBtn" type="button" class="btn btn-outline btn-success min-w-[110px]">
+    Next
+  </button>
+</div>
+      </div>
+    </div>
+  </div>
+</section>
 
         <!-- Blog Component -->
-        <section id="services">
+        <section id="" class="scroll-mt-32 md:scroll-mt-40">
           <div class="bg-base-100 py-8 sm:py-16 lg:py-24">
             <div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
               <!-- Section Header -->
@@ -555,7 +714,7 @@
                     <h5 class="card-title text-xl">Buffet Service</h5>
                     <p class="mb-5">Navigate effortlessly with our intuitive design, optimized for all devices. Enjoy a seamless experience whether you're on a computer or mobile device.</p>
                     <div class="card-actions">
-                      <a href="#" class="btn btn-success btn-gradient">
+                      <a href="product-detail.html" class="btn btn-success btn-gradient">
                         Read More
                         <span class="icon-[tabler--arrow-right] size-5 rtl:rotate-180"></span>
                       </a>
@@ -571,7 +730,7 @@
                     <h5 class="card-title text-xl">Food delivery</h5>
                     <p class="mb-5">Enjoy a safe shopping experience with multiple payment options and SSL encryption. Your personal and financial information is always protected.</p>
                     <div class="card-actions">
-                      <a href="#" class="btn btn-success btn-gradient">
+                      <a href="product-detail.html" class="btn btn-success btn-gradient">
                         Read More
                         <span class="icon-[tabler--arrow-right] size-5 rtl:rotate-180"></span>
                       </a>
@@ -587,10 +746,10 @@
                     <h5 class="card-title text-xl">Cafeteria</h5>
                     <p class="mb-5">Find products quickly with advanced filters, sorting options, and suggestion. Save time and effortlessly locate exactly what you need with ease.</p>
                     <div class="card-actions">
-                      <a href="#" class="btn btn-success btn-gradient">
-                        Read More
-                        <span class="icon-[tabler--arrow-right] size-5 rtl:rotate-180"></span>
-                      </a>
+                      <a href="product-detail.html" class="btn btn-success btn-gradient">
+                          Read More
+                          <span class="icon-[tabler--arrow-right] size-5 rtl:rotate-180"></span>
+                        </a>
                     </div>
                   </div>
                 </div>
@@ -731,7 +890,7 @@
           </div>
         </section>
         <!-- FAQ -->
-        <section id="faqs">
+        <section id="faqs" class="scroll-mt-32 md:scroll-mt-40">
           <div class="bg-base-100 relative h-full py-8 sm:py-16 lg:py-24">
             <div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
               <span class="intersect:motion-preset-slide-right intersect:motion-duration-800 intersect:motion-opacity-0 intersect:motion-delay-600 absolute start-[15%]">
@@ -966,18 +1125,24 @@
     <script src="assets/dist/js/landing-page-free.js"></script>
 
 <div id="imageLightbox"
-     class="fixed inset-0 hidden"
-     style="z-index:99999; background: rgba(0,0,0,0.55);">
+     class="fixed inset-0 hidden items-center justify-center"
+     style="
+       z-index:99999;
+       background: rgba(0,0,0,0.25);
+       backdrop-filter: blur(24px);
+       -webkit-backdrop-filter: blur(12px);
+     ">
+
 
   <button id="lightboxClose"
           type="button"
-          style="position:absolute; top:10px; right:20px; z-index:100003; font-size:52px; line-height:1; color:white; background:none; border:none; cursor:pointer;">
+          style="position:absolute; top:18px; right:24px; z-index:100003; font-size:52px; line-height:1; color:white; background:none; border:none; cursor:pointer;">
     &times;
   </button>
 
   <div id="lightboxCounter"
        style="position:absolute; left:50%; bottom:20px; transform:translateX(-50%); z-index:100003; color:white; font-size:20px;">
-    1 of 1
+    1 / 1
   </div>
 
   <button id="lightboxPrev"
@@ -986,13 +1151,13 @@
     &#8249;
   </button>
 
-  <button id="lightboxNext"
+<button id="lightboxNext"
           type="button"
           style="position:absolute; right:20px; top:50%; transform:translateY(-50%); z-index:100003; font-size:72px; line-height:1; color:white; background:none; border:none; cursor:pointer;">
     &#8250;
   </button>
 
-  <div style="width:100vw; height:100vh; display:flex; align-items:center; justify-content:center; padding:0 80px; box-sizing:border-box; position:relative;">
+  <div id="lightboxStage" style="width:100vw; height:100vh; display:flex; align-items:center; justify-content:center; padding:0 80px; box-sizing:border-box; position:relative;">
     <div id="lightboxPreviewPrevWrap" style="position:absolute; left:6%; top:50%; transform:translateY(-50%); z-index:100000; cursor:pointer;">
       <img id="lightboxPreviewPrev"
            src=""
@@ -1000,12 +1165,27 @@
            style="height:58vh; max-width:18vw; width:auto; object-fit:contain; opacity:0.3;" />
     </div>
 
-    <div style="position:relative; z-index:100002; width:50vw; height:80vh; display:flex; align-items:center; justify-content:center;">
-      <img id="lightboxImage"
+    <div id="lightboxCenter" style="max-width:92vw; max-height:88vh; display:flex; align-items:center; justify-content:center; position:relative; z-index:100002;">
+    <img id="lightboxImage"
      src=""
      alt="Preview"
-     style="max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; background:white; box-shadow:0 10px 30px rgba(0,0,0,0.35); opacity:1; transform:scale(1); transition:opacity .28s ease, transform .28s ease; cursor:zoom-in; user-select:none;" />
-    </div>
+     style="
+       max-width:100%;
+       max-height:88vh;
+       width:auto;
+       height:auto;
+       object-fit:contain;
+       background:white;
+       box-shadow:0 10px 30px rgba(0,0,0,0.35);
+       opacity:1;
+       transform:translate3d(0,0,0) scale(1);
+       transition:opacity .2s ease;
+       cursor:zoom-in;
+       user-select:none;
+       will-change:transform;
+     " />
+  </div>
+
 
     <div id="lightboxPreviewNextWrap" style="position:absolute; right:6%; top:50%; transform:translateY(-50%); z-index:100000; cursor:pointer;">
       <img id="lightboxPreviewNext"
@@ -1015,6 +1195,391 @@
     </div>
   </div>
 </div>
+<script id="mobile-nav-fix">
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggleBtn = document.getElementById('mobileMenuToggle');
+    const menu = document.getElementById('navbar-block-4');
 
+    if (!toggleBtn || !menu) return;
+
+    let backdrop = null;
+
+    const isMobile = () => window.innerWidth < 1024;
+
+    function syncIcons(open) {
+      const icons = toggleBtn.querySelectorAll('span');
+      if (icons.length >= 2) {
+        icons[0].classList.toggle('hidden', open);
+        icons[1].classList.toggle('hidden', !open);
+      }
+      toggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    function closeMenu() {
+      menu.classList.remove('mobile-open');
+
+      if (isMobile()) {
+        menu.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+
+      if (backdrop) {
+        backdrop.remove();
+        backdrop = null;
+      }
+
+      syncIcons(false);
+    }
+
+    function openMenu() {
+      if (!isMobile()) return;
+
+      menu.classList.remove('hidden');
+      menu.classList.add('mobile-open');
+      document.body.style.overflow = 'hidden';
+
+      if (!backdrop) {
+        backdrop = document.createElement('div');
+        backdrop.className = 'mobile-menu-backdrop';
+        backdrop.addEventListener('click', closeMenu);
+        document.body.appendChild(backdrop);
+      }
+
+      syncIcons(true);
+    }
+
+    toggleBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const isOpen = menu.classList.contains('mobile-open');
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    menu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (isMobile()) closeMenu();
+      });
+    });
+
+    window.addEventListener('resize', function () {
+      if (!isMobile()) {
+        menu.classList.remove('hidden', 'mobile-open');
+        document.body.style.overflow = '';
+
+        if (backdrop) {
+          backdrop.remove();
+          backdrop = null;
+        }
+
+        syncIcons(false);
+      } else if (!menu.classList.contains('mobile-open')) {
+        menu.classList.add('hidden');
+        syncIcons(false);
+      }
+    });
+
+    if (isMobile()) {
+      menu.classList.add('hidden');
+      syncIcons(false);
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const bolImages = [
+      { src: 'assets/img/bl-1.png', alt: 'Bill of Lading 1' },
+      { src: 'assets/img/bl-2.png', alt: 'Bill of Lading 2' },
+      { src: 'assets/img/bl-3.png', alt: 'Bill of Lading 3' },
+      { src: 'assets/img/bl-4.png', alt: 'Bill of Lading 4' },
+      { src: 'assets/img/test-1.jpg', alt: 'Bill of Lading 5' },
+      { src: 'assets/img/test-2.jpg', alt: 'Bill of Lading 6' },
+      { src: 'assets/img/test-3.jpg', alt: 'Bill of Lading 7' },
+      { src: 'assets/img/test-4.jpg', alt: 'Bill of Lading 8' }
+    ];
+
+    const itemsPerPage = 4;
+    let currentPage = 1;
+
+    const grid = document.getElementById('billOfLadingGrid');
+    const prevBtn = document.getElementById('bolPrevBtn');
+    const nextBtn = document.getElementById('bolNextBtn');
+    const pageInfo = document.getElementById('bolPageInfo');
+
+    const lightbox = document.getElementById('imageLightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+    const previewPrev = document.getElementById('lightboxPreviewPrev');
+    const previewNext = document.getElementById('lightboxPreviewNext');
+    const previewPrevWrap = document.getElementById('lightboxPreviewPrevWrap');
+    const previewNextWrap = document.getElementById('lightboxPreviewNextWrap');
+    const lightboxStage = document.getElementById('lightboxStage');
+    const lightboxCenter = document.getElementById('lightboxCenter');
+    if (!grid || !prevBtn || !nextBtn || !pageInfo || !lightbox || !lightboxImage) return;
+
+    let currentIndex = 0;
+    let currentPageItems = [];
+
+    let zoomScale = 1;
+    let translateX = 0;
+    let translateY = 0;
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartY = 0;
+    let rafId = null;
+
+    function requestRender() {
+      if (rafId) return;
+      rafId = requestAnimationFrame(function () {
+        lightboxImage.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${zoomScale})`;
+        lightboxImage.style.cursor = zoomScale > 1 ? (isDragging ? 'grabbing' : 'grab') : 'zoom-in';
+        rafId = null;
+      });
+    }
+
+    function resetZoom() {
+      zoomScale = 1;
+      translateX = 0;
+      translateY = 0;
+      isDragging = false;
+      lightboxImage.style.transition = 'opacity .2s ease';
+      requestRender();
+    }
+
+    function clampTranslate() {
+      if (zoomScale <= 1) {
+        translateX = 0;
+        translateY = 0;
+        return;
+      }
+
+      const imgW = lightboxImage.offsetWidth;
+      const imgH = lightboxImage.offsetHeight;
+
+      const maxX = Math.max(0, (imgW * (zoomScale - 1)) / 2);
+      const maxY = Math.max(0, (imgH * (zoomScale - 1)) / 2);
+
+      if (translateX > maxX) translateX = maxX;
+      if (translateX < -maxX) translateX = -maxX;
+      if (translateY > maxY) translateY = maxY;
+      if (translateY < -maxY) translateY = -maxY;
+    }
+
+    function setZoom(nextScale) {
+      zoomScale = Math.min(4, Math.max(1, nextScale));
+
+      if (zoomScale === 1) {
+        translateX = 0;
+        translateY = 0;
+      } else {
+        clampTranslate();
+      }
+
+      lightboxImage.style.transition = 'opacity .2s ease';
+      requestRender();
+    }
+
+    function updateLightbox(index) {
+      currentIndex = index;
+      const fullSrc = currentPageItems[currentIndex].getAttribute('data-full');
+
+      resetZoom();
+      lightboxImage.src = fullSrc;
+      lightboxCounter.textContent = `${currentIndex + 1} / ${currentPageItems.length}`;
+
+      const prevIndex = (currentIndex - 1 + currentPageItems.length) % currentPageItems.length;
+      const nextIndex = (currentIndex + 1) % currentPageItems.length;
+
+      previewPrev.src = currentPageItems[prevIndex].getAttribute('data-full');
+      previewNext.src = currentPageItems[nextIndex].getAttribute('data-full');
+    }
+
+    function openLightbox(index) {
+      lightbox.classList.remove('hidden');
+      lightbox.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      updateLightbox(index);
+    }
+
+    function closeLightbox() {
+      lightbox.classList.add('hidden');
+      lightbox.style.display = '';
+      document.body.style.overflow = '';
+      resetZoom();
+    }
+
+    function bindGridClicks() {
+      currentPageItems = Array.from(document.querySelectorAll('#billOfLadingGrid .doc-item'));
+
+      currentPageItems.forEach(function (item, index) {
+        item.onclick = function () {
+          openLightbox(index);
+        };
+      });
+    }
+
+    function renderBolPage() {
+      const totalPages = Math.ceil(bolImages.length / itemsPerPage);
+      const start = (currentPage - 1) * itemsPerPage;
+      const end = start + itemsPerPage;
+      const currentItems = bolImages.slice(start, end);
+
+      grid.innerHTML = currentItems.map(function (item) {
+        return `
+          <button
+            type="button"
+            class="doc-item overflow-hidden bg-white transition hover:scale-[1.02]"
+            data-full="${item.src}">
+            <img
+              src="${item.src}"
+              alt="${item.alt}"
+              class="h-[380px] w-full object-contain bg-white" />
+          </button>
+        `;
+      }).join('');
+
+      pageInfo.textContent = `${currentPage} / ${totalPages}`;
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === totalPages;
+
+      bindGridClicks();
+    }
+
+    lightboxClose.onclick = closeLightbox;
+
+    lightboxPrev.onclick = function () {
+      updateLightbox((currentIndex - 1 + currentPageItems.length) % currentPageItems.length);
+    };
+
+    lightboxNext.onclick = function () {
+      updateLightbox((currentIndex + 1) % currentPageItems.length);
+    };
+
+
+    lightboxImage.onclick = function (e) {
+      e.stopPropagation();
+      if (zoomScale > 1) {
+        resetZoom();
+      } else {
+        setZoom(2);
+      }
+    };
+
+    lightboxImage.addEventListener('wheel', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const delta = e.deltaY < 0 ? 0.2 : -0.2;
+      setZoom(zoomScale + delta);
+    }, { passive: false });
+
+    lightboxImage.addEventListener('mousedown', function (e) {
+      if (zoomScale <= 1) return;
+
+      isDragging = true;
+      dragStartX = e.clientX - translateX;
+      dragStartY = e.clientY - translateY;
+      lightboxImage.style.transition = 'none';
+      requestRender();
+      e.preventDefault();
+    });
+
+    window.addEventListener('mousemove', function (e) {
+      if (!isDragging) return;
+
+      translateX = e.clientX - dragStartX;
+      translateY = e.clientY - dragStartY;
+      clampTranslate();
+      requestRender();
+    });
+
+    window.addEventListener('mouseup', function () {
+      if (!isDragging) return;
+      isDragging = false;
+      lightboxImage.style.transition = 'opacity .2s ease';
+      requestRender();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (lightbox.classList.contains('hidden')) return;
+
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') {
+        updateLightbox((currentIndex - 1 + currentPageItems.length) % currentPageItems.length);
+      }
+      if (e.key === 'ArrowRight') {
+        updateLightbox((currentIndex + 1) % currentPageItems.length);
+      }
+    });
+    if (lightboxCenter) {
+  lightboxCenter.addEventListener('click', function (e) {
+    e.stopPropagation();
+  });
+}
+
+if (lightboxPrev) {
+  lightboxPrev.addEventListener('click', function (e) {
+    e.stopPropagation();
+  });
+}
+
+if (lightboxNext) {
+  lightboxNext.addEventListener('click', function (e) {
+    e.stopPropagation();
+  });
+}
+
+if (lightboxClose) {
+  lightboxClose.addEventListener('click', function (e) {
+    e.stopPropagation();
+  });
+}
+
+if (previewPrevWrap) {
+  previewPrevWrap.addEventListener('click', function (e) {
+    e.stopPropagation();
+    updateLightbox((currentIndex - 1 + currentPageItems.length) % currentPageItems.length);
+  });
+}
+
+if (previewNextWrap) {
+  previewNextWrap.addEventListener('click', function (e) {
+    e.stopPropagation();
+    updateLightbox((currentIndex + 1) % currentPageItems.length);
+  });
+}
+
+if (lightboxStage) {
+  lightboxStage.addEventListener('click', function (e) {
+    if (!lightboxCenter.contains(e.target)) {
+      closeLightbox();
+    }
+  });
+}
+    prevBtn.addEventListener('click', function () {
+      if (currentPage > 1) {
+        currentPage--;
+        renderBolPage();
+      }
+    });
+
+    nextBtn.addEventListener('click', function () {
+      const totalPages = Math.ceil(bolImages.length / itemsPerPage);
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderBolPage();
+      }
+    });
+
+    renderBolPage();
+  });
+</script>
 </body>
 </html>

@@ -6340,8 +6340,9 @@
   .overflow-y-auto {
     overflow-y: auto;
   }
+  
   .scroll-smooth {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
   .card-alert {
     .card & {
@@ -10288,7 +10289,7 @@ span.flatpickr-weekday, .flatpickr-weekwrapper .flatpickr-weekday {
       --color-base-200: oklch(25.39% 0.025 298.72);
       --color-base-300: oklch(23.44% 0.0194 298.63);
       --color-base-content: oklch(84.98% 0.014 295.28);
-      --color-primary: oklch(53.93% 0.271 286.75);
+      --color-primary: oklch(67.35% 0.201 146.84);
       --color-primary-content: oklch(88.22% 0.062 290.17);
       --color-secondary: oklch(49.12% 0.021 303.05);
       --color-secondary-content: oklch(88.83% 0.007 304.23);
@@ -10355,7 +10356,7 @@ span.flatpickr-weekday, .flatpickr-weekwrapper .flatpickr-weekday {
     --color-base-200: oklch(25.39% 0.025 298.72);
     --color-base-300: oklch(23.44% 0.0194 298.63);
     --color-base-content: oklch(84.98% 0.014 295.28);
-    --color-primary: oklch(53.93% 0.271 286.75);
+    --color-primary: oklch(67.35% 0.201 146.84);
     --color-primary-content: oklch(88.22% 0.062 290.17);
     --color-secondary: oklch(49.12% 0.021 303.05);
     --color-secondary-content: oklch(88.83% 0.007 304.23);
@@ -11811,4 +11812,7 @@ span.flatpickr-weekday, .flatpickr-weekwrapper .flatpickr-weekday {
       --tw-translate-z: 0;
     }
   }
+  #imageLightbox {
+  transition: all 0.25s ease;
+}
 }
