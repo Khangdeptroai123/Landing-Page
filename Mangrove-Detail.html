@@ -137,41 +137,43 @@
     object-fit: contain;
   }
   .thumb-wrapper {
-    position: relative;
-    width: 100%;
-    padding: 0 48px; /* chừa chỗ cho arrow 2 bên */
-    margin-top: 0.75rem;
-  }
+  position: relative;
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0 56px;
+}
   .thumb-row {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 0.75rem;
-    overflow-x: auto;
-    padding: 0;
-    scrollbar-width: none;
-    scroll-behavior: smooth;
-  }
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding: 0;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  height: 90px;
+} 
 
 
   .thumb-row::-webkit-scrollbar {
     display: none;
   }
   .thumb-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 20;
-    width: 40px;
-    height: 40px;
-    border-radius: 999px;
-    border: none;
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
   .thumb-arrow.left {
     left: 0;
   }
@@ -447,8 +449,8 @@
       }
 
       header {
-        z-index: 30 !important;
-      }
+  z-index: 9999 !important;
+}
     }
 
     @media (max-width: 767px) {
@@ -516,7 +518,7 @@
 
     .products-page {
       background: #e6e2e2;
-      padding-top: 150px;
+      padding-top: 170px;
       color: #1f2937;
     }
 
@@ -918,7 +920,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 20;
+    z-index: 10;
     width: 40px;
     height: 40px;
     border-radius: 999px;
