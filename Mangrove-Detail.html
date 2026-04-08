@@ -1,0 +1,1370 @@
+  <!doctype html>
+  <html lang="en" data-theme="light" data-assets-path="assets/" data-layout-path="free-landing-page/" dir="ltr">
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+      <meta name="robots" content="noindex, nofollow" />
+      <title>Grova Charcoal</title>
+
+      <meta name="description" content="Product detail page" />
+      <link rel="icon" type="image/x-icon" href="assets/img/avatar.png" />
+
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&ampdisplay=swap" rel="stylesheet" />
+
+      <link rel="stylesheet" href="assets/dist/libs/flatpickr/dist/flatpickr.css" />
+      <link rel="stylesheet" href="assets/dist/css/output.css" />
+
+      <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggleBtn = document.getElementById('mobileMenuToggle');
+      const menu = document.getElementById('navbar-block-4');
+
+      if (toggleBtn && menu) {
+        let backdrop = null;
+        const isMobile = () => window.innerWidth < 1024;
+
+        function syncIcons(open) {
+          const icons = toggleBtn.querySelectorAll('span');
+          if (icons.length >= 2) {
+            icons[0].classList.toggle('hidden', open);
+            icons[1].classList.toggle('hidden', !open);
+          }
+          toggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+
+        function closeMenu() {
+          menu.classList.remove('mobile-open');
+          if (isMobile()) {
+            menu.classList.add('hidden');
+            document.body.style.overflow = '';
+          }
+          if (backdrop) {
+            backdrop.remove();
+            backdrop = null;
+          }
+          syncIcons(false);
+        }
+
+        function openMenu() {
+          if (!isMobile()) return;
+          menu.classList.remove('hidden');
+          menu.classList.add('mobile-open');
+          document.body.style.overflow = 'hidden';
+          if (!backdrop) {
+            backdrop = document.createElement('div');
+            backdrop.className = 'mobile-menu-backdrop';
+            backdrop.addEventListener('click', closeMenu);
+            document.body.appendChild(backdrop);
+          }
+          syncIcons(true);
+        }
+
+        toggleBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const isOpen = menu.classList.contains('mobile-open');
+          if (isOpen) closeMenu();
+          else openMenu();
+        });
+
+        menu.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            if (isMobile()) closeMenu();
+          });
+        });
+
+        window.addEventListener('resize', function () {
+          if (!isMobile()) {
+            menu.classList.remove('hidden', 'mobile-open');
+            document.body.style.overflow = '';
+            if (backdrop) {
+              backdrop.remove();
+              backdrop = null;
+            }
+            syncIcons(false);
+          } else if (!menu.classList.contains('mobile-open')) {
+            menu.classList.add('hidden');
+            syncIcons(false);
+          }
+        });
+
+        if (isMobile()) {
+          menu.classList.add('hidden');
+          syncIcons(false);
+        }
+      }
+
+      const categoryButtons = document.querySelectorAll('.category-btn');
+      const productCards = document.querySelectorAll('.product-card');
+
+      categoryButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          const filter = button.getAttribute('data-filter');
+
+          categoryButtons.forEach(function (btn) {
+            btn.classList.remove('is-active');
+          });
+
+          button.classList.add('is-active');
+
+          productCards.forEach(function (card) {
+            const category = card.getAttribute('data-category');
+            if (filter === 'all' || category === filter) {
+              card.style.display = '';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+
+      <style>
+  .main-image-wrap {
+    width: 100%;
+    height: 420px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .main-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .thumb-wrapper {
+    position: relative;
+    width: 100%;
+    padding: 0 48px; /* chừa chỗ cho arrow 2 bên */
+    margin-top: 0.75rem;
+  }
+  .thumb-row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding: 0;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+  }
+
+
+  .thumb-row::-webkit-scrollbar {
+    display: none;
+  }
+  .thumb-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: none;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .thumb-arrow.left {
+    left: 0;
+  }
+
+  .thumb-arrow.right {
+    right: 0;
+  }
+    html {
+      scroll-behavior: auto;
+    }
+
+    body {
+      background: #ead8c9;
+    }
+
+    .products-page {
+      background: #ead8c9;
+    }
+
+    .products-wrap {
+      display: grid;
+      grid-template-columns: 290px minmax(0, 1fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .products-sidebar {
+      background: #f3f3f3;
+      padding: 1.5rem;
+    }
+
+    .products-sidebar-title {
+      font-size: 2rem;
+      line-height: 1.2;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #111;
+    }
+
+    .products-sidebar-line {
+      width: 42px;
+      height: 4px;
+      background: #d8d8d8;
+      margin-top: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .category-btn {
+      width: 100%;
+      display: block;
+      border: 1px solid #e6b48c;
+      border-radius: 14px;
+      background: transparent;
+      color: #b6541b;
+      text-align: left;
+      font-weight: 600;
+      padding: 1rem 1.25rem;
+      transition: 0.2s ease;
+    }
+
+    .category-btn:hover,
+    .category-btn.is-active {
+      background: #fff7f1;
+      border-color: #de9f6c;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .product-card-media {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: #f5f5f5;
+    }
+
+    .product-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: #ff6b00;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.85rem 1rem;
+      border-bottom-left-radius: 14px;
+    }
+
+    .product-card-body {
+      padding: 1.25rem 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      flex: 1;
+    }
+
+    .product-card-category {
+      color: #ff8c42;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+      font-weight: 500;
+    }
+
+    .product-card-title {
+      color: #111;
+      font-size: 1.15rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    .product-card-desc {
+      color: #555;
+      font-size: 0.98rem;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .product-card-actions {
+      margin-top: auto;
+      padding-top: 0.5rem;
+    }
+
+    .product-card-actions .btn {
+      width: 100%;
+    }
+
+    @media (max-width: 1199px) {
+      .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 991px) {
+      .products-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .products-sidebar {
+        padding: 1.25rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+    .thumb-btn {
+    min-width: 88px;
+    border-radius: 12px;
+  }
+
+
+  .thumb-row {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+    .main-image-wrap {
+  height: auto;
+  border-radius: 16px;
+  aspect-ratio: 4 / 3;
+}
+
+.main-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+    }
+
+    .product-gallery-thumb.active {
+      border-color: #22c55e;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 1023px) {
+      header .navbar {
+        min-height: 88px;
+        align-items: center;
+      }
+
+      header .navbar-start {
+        width: 100%;
+        gap: 0.75rem;
+      }
+
+      header .navbar-start > a {
+        min-width: 0;
+        flex: 1 1 auto;
+      }
+
+      header .navbar-start > a img {
+        width: 100% !important;
+        max-width: 220px;
+        height: 72px !important;
+        object-fit: contain !important;
+        object-position: left center !important;
+        display: block;
+      }
+
+      header .navbar-start .lg\:hidden {
+        flex: 0 0 auto;
+        gap: 0.5rem;
+      }
+
+      header .navbar-start .btn-success.btn-sm {
+        white-space: nowrap;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        font-size: 0.875rem;
+      }
+
+      #navbar-block-4 {
+        width: 100%;
+      }
+
+  #navbar-block-4.mobile-open {
+    display: block !important;
+    position: relative;
+    z-index: 50;
+    width: 100%;
+    height: auto !important;
+    overflow: visible !important;
+    margin-top: 0.75rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--color-base-100, #1f1b2d);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+  }
+
+      #navbar-block-4.mobile-open .text-base-content {
+        gap: 0.25rem;
+        font-size: 1rem;
+      }
+
+      #navbar-block-4.mobile-open .nav-link {
+        display: block;
+        padding: 0.85rem 0.25rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      #navbar-block-4.mobile-open .nav-link:last-child {
+        border-bottom: none;
+      }
+
+      .mobile-menu-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 9;
+      }
+
+      header {
+        z-index: 30 !important;
+      }
+    }
+
+    @media (max-width: 767px) {
+      header .navbar {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      header .navbar-start {
+        align-items: flex-start;
+      }
+
+      header .navbar-start > a img {
+        max-width: 150px;
+        height: 54px !important;
+      }
+
+      header .navbar-start .btn-success.btn-sm {
+        font-size: 0.75rem;
+        padding-left: 0.65rem;
+        padding-right: 0.65rem;
+        height: 2.25rem;
+      }
+
+      .collapse-toggle {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+        flex: 0 0 2.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header .navbar-start > a img {
+        max-width: 120px;
+        height: 48px !important;
+      }
+
+      header .navbar-start .btn-success.btn-sm {
+        font-size: 0.7rem;
+        padding-left: 0.55rem;
+        padding-right: 0.55rem;
+      }
+    }
+  </style>
+  <style>
+    .products-page {
+      background: #3f3b48;
+      padding-top: 160px;
+    }
+
+    @media (min-width: 768px) {
+      .products-page {
+        padding-top: 175px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .products-page {
+        padding-top: 150px;
+      }
+    }
+    body {
+      background: #f6f0ea;
+    }
+
+    .products-page {
+      background: #e6e2e2;
+      padding-top: 150px;
+      color: #1f2937;
+    }
+
+  .detail-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(380px, 0.95fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+    .detail-left,
+    .detail-right {
+      min-width: 0;
+    }
+
+    .main-image-wrap {
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+    }
+  .thumb-btn {
+    width: 90px;
+    height: 90px;
+    flex: 0 0 auto;
+    border: 1px solid #d8cfc6;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    cursor: pointer;
+    transition: 0.2s ease;
+    padding: 0;
+  }
+
+    .thumb-btn.active {
+      border-color: #b8742f;
+      box-shadow: 0 0 0 2px rgba(184, 116, 47, 0.12);
+    }
+
+  .thumb-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+    .feature-icons {
+    display: flex;
+    justify-content: space-between; /* cân đều */
+    align-items: center;
+    margin-top: 2rem;
+      max-width: 400px;
+    margin: 1rem auto 0;
+    }
+    .feature-box {
+      text-align: center;
+        flex: 1;
+    }
+    .feature-box .icon-box {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 0.75rem;
+      border-radius: 10px;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-box .icon-box img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .feature-box span {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #2f241b;
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+
+    .breadcrumb-mini {
+      font-size: 0.9rem;
+      color: #8a7668;
+      margin-bottom: 0.75rem;
+    }
+
+    .breadcrumb-mini a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .product-title-lg {
+      font-size: 3rem;
+      line-height: 1.1;
+      font-weight: 800;
+      color: #1d2430;
+      margin: 0 0 1rem;
+    }
+
+    .product-copy {
+      color: #5c4d41;
+      line-height: 1.85;
+      font-size: 1.03rem;
+      margin-bottom: 1rem;
+    }
+
+    .promo-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 160px;
+      height: 48px;
+      padding: 0 1.25rem;
+      border-radius: 8px;
+      background: #b8742f;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 0.75rem 0 1.25rem;
+    }
+
+    .meta-block {
+      border-top: 1px solid #ddd1c7;
+      padding-top: 1rem;
+      margin-top: 1rem;
+      color: #2f241b;
+    }
+
+    .meta-block p {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+    }
+
+    .social-row {
+      display: flex;
+      gap: 1rem;
+      padding-top: 1rem;
+      margin-top: 1rem;
+      border-top: 1px solid #ddd1c7;
+    }
+
+    .social-row a {
+      color: #1d2430;
+      font-size: 1.1rem;
+    }
+
+    .detail-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      border-bottom: 1px solid #ddd1c7;
+      margin-top: 3rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .detail-tab {
+      padding: 0 0 1rem;
+      font-weight: 600;
+      color: #8b8178;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+    }
+
+    .detail-tab.active {
+    color: #1d2430;
+    border-color: #1d2430;
+    }
+    .detail-panel {
+    display: none;
+  }
+
+  .detail-panel.active {
+    display: block;
+  }
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem 3rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .spec-grid p {
+      margin: 0;
+      color: #5c4d41;
+      line-height: 1.8;
+    }
+
+    .spec-grid strong {
+      color: #2d3440;
+    }
+
+    .related-title {
+      font-size: 2.6rem;
+      font-weight: 800;
+      text-align: center;
+      color: #1d2430;
+      margin: 4rem 0 2rem;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .related-card {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      text-align: center;
+    }
+
+    .related-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+    }
+
+    .related-card-body {
+      padding: 1.25rem 1rem 1.5rem;
+    }
+
+    .related-card h3 {
+      margin: 0 0 0.75rem;
+      font-size: 1.6rem;
+      color: #111827;
+    }
+    .icon-box {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 0.75rem;
+    border-radius: 12px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-box img {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+  }
+
+    .related-card a {
+      color: #111827;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+  @media (max-width: 991px) {
+    .detail-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(380px, 0.95fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+    .related-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+    @media (max-width: 767px) {
+    .products-page {
+      padding-top: 120px;
+    }
+    .detail-shell {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .detail-left,
+    .detail-right {
+      width: 100%;
+    }
+
+
+    .feature-icons {
+      grid-template-columns: repeat(3, 1fr); /* FIX */
+      gap: 1rem;
+        max-width: 400px;
+    margin: 1rem auto 0;
+    }
+
+    .feature-box .icon-box {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-box .icon-box img {
+      width: 48px;
+      height: 48px;
+    }
+  feature-box span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #2f241b;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+    .breadcrumb-mini {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-title-lg {
+      font-size: 2.2rem;
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+
+    .product-copy {
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 0.9rem;
+    }
+
+    .promo-btn {
+      width: 100%;
+      max-width: 220px;
+      height: 52px;
+    }
+
+    .meta-block {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+    }
+
+    .meta-block p {
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+
+    .social-row {
+      padding-top: 0.9rem;
+      margin-top: 0.9rem;
+    }
+    .detail-tabs {
+      display: flex;
+      flex-wrap: wrap;          /* cho phép xuống dòng hẳn */
+      justify-content: flex-start;
+      gap: 0.75rem 1rem;        /* giảm khoảng cách */
+      margin-top: 2rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.25rem;
+    }
+
+    .detail-tab {
+      flex: 0 0 auto;           /* mỗi tab tự theo nội dung */
+      padding: 0 0 0.6rem;
+      font-size: 0.95rem;
+      white-space: nowrap;      /* chữ không bể giữa tab */
+    }
+
+
+    .spec-grid {
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+    }
+
+    .spec-grid p {
+      font-size: 1rem;
+    }
+
+    .related-title {
+      font-size: 2rem;
+      margin: 3rem 0 1.5rem;
+    }
+
+    .related-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .related-card h3 {
+      font-size: 1.4rem;
+    }
+    .thumb-wrapper {
+    position: relative;
+    overflow: hidden;
+    }
+
+    .thumb-row::-webkit-scrollbar {
+      display: none;
+    }
+
+  .thumb-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: none;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+    .thumb-arrow.left {
+      left: 0;
+    }
+
+    .thumb-arrow.right {
+      right: 0;
+    }
+
+  .thumb-btn {
+    width: 90px;
+    height: 90px;
+    flex: 0 0 auto;
+    border: 1px solid #d8cfc6;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    cursor: pointer;
+    transition: 0.2s ease;
+    padding: 0;
+  }
+
+  .thumb-btn.active {
+    border-color: #b8742f;
+    box-shadow: 0 0 0 2px rgba(184, 116, 47, 0.2);
+  }
+
+  .thumb-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  }
+  </style>
+      <script type="text/javascript">
+        (function () {
+          try {
+            const root = document.documentElement;
+            const layoutPath = root.getAttribute('data-layout-path')?.replace('/', '') || 'dashboard-default';
+            const localStorageKey = `${layoutPath}-theme`;
+
+            window.THEME_CONFIG = {
+              'free-landing-page': {
+                default: 'light',
+                light: 'light',
+                dark: 'dark',
+                system: { light: 'light', dark: 'dark' }
+              }
+            };
+
+            const getSystemPreference = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            const resolveTheme = (selectedTheme, layoutPath) => {
+              const layoutConfig = window.THEME_CONFIG[layoutPath];
+              if (!layoutConfig) return selectedTheme === 'system' ? (getSystemPreference() ? 'dark' : 'light') : selectedTheme;
+
+              if (selectedTheme === 'system') {
+                const systemConfig = layoutConfig.system;
+                const prefersDark = getSystemPreference();
+                return prefersDark ? systemConfig.dark : systemConfig.light;
+              }
+
+              return layoutConfig[selectedTheme] || selectedTheme || layoutConfig.default || 'light';
+            };
+
+            const savedTheme = localStorage.getItem(localStorageKey) || 'system';
+            const resolvedTheme = resolveTheme(savedTheme, layoutPath);
+            root.setAttribute('data-theme', resolvedTheme);
+          } catch (e) {
+            console.warn('Early theme script error:', e);
+          }
+        })();
+      </script>
+    </head>
+
+    <body>
+      <div class="bg-base-100">
+        <!-- NAVBAR GIỮ Y NGUYÊN -->
+        <header class="border-base-content/20 bg-base-100 py-0.25 fixed top-0 z-10 w-full border-b">
+          <nav class="navbar mx-auto max-w-[1280px] rounded-b-xl px-4 sm:px-6 lg:px-8">
+            <div class="w-full lg:flex lg:items-center lg:gap-2">
+              <div class="navbar-start items-center justify-between max-lg:w-full">
+                <a class="text-base-content flex items-center gap-2 font-semibold" href="index.html">
+                  <img
+                    src="assets/img/logo.png"
+                    alt="Grova Export"
+                    style="height: 110px; width: 320px; object-fit: contain; object-position: left center;" />
+                </a>
+
+                <div class="flex items-center gap-5 lg:hidden">
+                  <a href="index.html#contact-us" class="btn btn-success btn-sm">Request a Quote</a>
+                  <button
+                    id="mobileMenuToggle"
+                    type="button"
+                    class="collapse-toggle btn btn-outline btn-secondary btn-square"
+                    aria-controls="navbar-block-4"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="icon-[tabler--menu-2] collapse-open:hidden size-5.5"></span>
+                    <span class="icon-[tabler--x] collapse-open:block size-5.5 hidden"></span>
+                  </button>
+                </div>
+              </div>
+
+              <div id="navbar-block-4" class="hidden grow overflow-hidden font-medium duration-300 lg:flex lg:navbar-center">
+                <div class="text-base-content flex gap-6 text-xl max-lg:mt-4 max-lg:flex-col lg:items-center">
+                  <a href="index.html#home" class="hover:text-success nav-link">Home</a>
+                  <a href="index.html#about-us" class="hover:text-success nav-link">About Us</a>
+                  <a href="index.html#services" class="hover:text-success nav-link">Services</a>
+                  <a href="product-detail.html" class="text-success nav-link">Products</a>
+                  <a href="index.html#documents" class="hover:text-success nav-link">Documents</a>
+                  <a href="index.html#faqs" class="hover:text-success nav-link">FAQS</a>
+                </div>
+              </div>
+
+              <div class="navbar-end max-lg:hidden">
+                <a href="index.html#contact-us" class="btn btn-success">Request a Quote</a>
+              </div>
+            </div>
+          </nav>
+        </header>
+
+        <main class="products-page">
+    <section class="py-8 sm:py-10 lg:py-12">
+      <div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+        <div class="detail-shell">
+          <!-- LEFT -->
+          <div class="detail-left">
+    <div class="main-image-wrap">
+      <img id="mainProductImage" src="assets/img/black-charcoal.png" alt="Mangrove Charcoal" />
+    </div>
+
+    <div class="thumb-wrapper">
+    <button class="thumb-arrow left" type="button">‹</button>
+    
+    <div class="thumb-row">
+      <button class="thumb-btn active" type="button" data-image="assets/img/black-charcoal.png">
+        <img src="assets/img/black-charcoal.png" alt="thumb 1">
+      </button>
+      <button class="thumb-btn" type="button" data-image="assets/img/free-blog-1.png">
+        <img src="assets/img/free-blog-1.png" alt="thumb 2">
+      </button>
+      <button class="thumb-btn" type="button" data-image="assets/img/free-blog-2.png">
+        <img src="assets/img/free-blog-2.png" alt="thumb 3">
+      </button>
+      <button class="thumb-btn" type="button" data-image="assets/img/free-blog-3.png">
+        <img src="assets/img/free-blog-3.png" alt="thumb 4">
+      </button>
+      <button class="thumb-btn" type="button" data-image="assets/img/white-charcoal.png">
+        <img src="assets/img/white-charcoal.png" alt="thumb 5">
+      </button>
+      <button class="thumb-btn" type="button" data-image="assets/img/than gáo dừa.png">
+        <img src="assets/img/than gáo dừa.png" alt="thumb 6">
+      </button>
+    </div>
+
+    <button class="thumb-arrow right" type="button">›</button>
+  </div>
+  <div class="feature-icons">
+
+    <div class="feature-box">
+      <div class="icon-box">
+        <img src="assets/img/heat.webp" alt="High heat">
+      </div>
+      <span>HIGH-HEAT</span>
+    </div>
+
+    <div class="feature-box">
+      <div class="icon-box">
+        <img src="assets/img/coal.webp" alt="Smokeless">
+      </div>
+      <span>SMOKELESS</span>
+    </div>
+    <div class="feature-box">
+      <div class="icon-box">
+        <img src="assets/img/long burn.webp" alt="Long burning">
+      </div>
+      <span>LONG</br>
+        BURNING TIME</span>
+    </div>
+  </div>
+  </div>    
+          <!-- RIGHT -->
+          <div class="detail-right">
+            <p class="breadcrumb-mini">
+              <a href="index.html">Home</a> /
+              <a href="product-detail.html">Wood charcoal</a> /
+              <span>Mangrove Charcoal</span>
+            </p>
+
+            <h1 class="product-title-lg">Mangrove Charcoal</h1>
+
+            <p class="product-copy">
+              Mangrove charcoal offers high heat and long burn time, perfect for BBQ grilling.
+              Free samples, OEM services, and reliable exports to Taiwan, Singapore, Hong Kong,
+              Australia, Bahrain, Kuwait, New Zealand, and China.
+            </p>
+
+            <p class="product-copy">
+              Mangrove charcoal is widely preferred because of its smokeless, odorless feature.
+              It produces high and consistent heat, making it the perfect charcoal for BBQ parties.
+            </p>
+
+            <p class="product-copy">
+              PNP is proud to say that Mangrove charcoal is our primary product. We are our own supplier
+              of mangrove wood – the main material to make mangrove charcoal. With this considerable advantage,
+              PNP manages to supply mangrove charcoal in stable quantities at a competitive price.
+            </p>
+
+            <a href="index.html#contact-us" class="promo-btn">Get promotion</a>
+
+            <div class="meta-block">
+              <p><strong>Category:</strong> Wood charcoal</p>
+              <p><strong>Tags:</strong> Mangrove charcoal, Wood charcoal</p>
+            </div>
+
+            <div class="social-row">
+              <a href="#"><span class="icon-[tabler--brand-facebook] size-5"></span></a>
+              <a href="#"><span class="icon-[tabler--brand-linkedin] size-5"></span></a>
+              <a href="#"><span class="icon-[tabler--brand-twitter] size-5"></span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-tabs">
+    <button class="detail-tab active" data-tab="specification">Specification</button>
+    <button class="detail-tab" data-tab="material">Material</button>
+    <button class="detail-tab" data-tab="packaging">Packaging</button>
+    <button class="detail-tab" data-tab="payment">Payment terms</button>
+    <button class="detail-tab" data-tab="faq">FAQ</button>
+  </div>
+
+  <div class="detail-panel active" id="tab-specification">
+    <div class="spec-grid">
+      <p><strong>Burning time:</strong> 3.5 - 4 hours</p>
+      <p><strong>Calorific value:</strong> 7504 kcal/kg</p>
+      <p><strong>Fixed carbon content:</strong> 76.01%</p>
+      <p><strong>Ash content:</strong> 2.04%</p>
+      <p><strong>Moisture content:</strong> 2.39%</p>
+      <p><strong>Volatile matter content:</strong> 28.8%</p>
+      <p><strong>Shape:</strong> Round stick</p>
+      <p><strong>Diameter:</strong> 3-5 cm, 6-10 cm</p>
+      <p><strong>Length:</strong> 12-20 cm</p>
+      <p><strong>Capacity:</strong> 3000 tons/month</p>
+    </div>
+  </div>
+
+  <div class="detail-panel" id="tab-material">
+    <div class="spec-grid">
+      <p><strong>Main material:</strong> Mangrove wood</p>
+      <p><strong>Origin:</strong> Vietnam</p>
+      <p><strong>Type:</strong> Wood charcoal</p>
+    </div>
+  </div>
+
+  <div class="detail-panel" id="tab-packaging">
+    <div class="spec-grid">
+      <p><strong>Packing:</strong> PP bag / carton box</p>
+      <p><strong>Custom packing:</strong> Available</p>
+      <p><strong>OEM:</strong> Supported</p>
+    </div>
+  </div>
+
+  <div class="detail-panel" id="tab-payment">
+    <div class="spec-grid">
+      <p><strong>Payment:</strong> T/T, L/C</p>
+      <p><strong>Lead time:</strong> Negotiable</p>
+    </div>
+  </div>
+
+  <div class="detail-panel" id="tab-faq">
+    <div class="spec-grid">
+      <p><strong>Q:</strong> Do you support samples?</p>
+      <p><strong>A:</strong> Yes, free samples are available.</p>
+      <p><strong>Q:</strong> Do you support OEM?</p>
+      <p><strong>A:</strong> Yes, OEM service is supported.</p>
+    </div>
+  </div>
+
+        <h2 class="related-title">Related products</h2>
+
+        <div class="related-grid">
+          <article class="related-card">
+            <img src="assets/img/black-charcoal.png" alt="Longan Charcoal">
+            <div class="related-card-body">
+              <h3>Longan Charcoal</h3>
+              <a href="product-detail.html">Read more</a>
+            </div>
+          </article>
+
+          <article class="related-card">
+            <img src="assets/img/free-blog-1.png" alt="Kaya charcoal">
+            <div class="related-card-body">
+              <h3>Kaya charcoal</h3>
+              <a href="product-detail.html">Read more</a>
+            </div>
+          </article>
+
+          <article class="related-card">
+            <img src="assets/img/free-blog-2.png" alt="Coffee Wood Charcoal">
+            <div class="related-card-body">
+              <h3>Coffee Wood Charcoal</h3>
+              <a href="product-detail.html">Read more</a>
+            </div>
+          </article>
+
+          <article class="related-card">
+            <img src="assets/img/free-blog-3.png" alt="Eucalyptus Charcoal">
+            <div class="related-card-body">
+              <h3>Eucalyptus Charcoal</h3>
+              <a href="product-detail.html">Read more</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+        <footer>
+          <div class="mx-auto max-w-[1280px] px-4 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
+            <div class="flex items-center justify-between gap-3 max-md:flex-col">
+              <a href="index.html" class="text-base-content flex items-center gap-3 text-xl font-semibold">
+                <span>Grova Export</span>
+              </a>
+
+              <nav class="flex items-center gap-6">
+                <a href="index.html#about-us" class="link link-animated text-base-content/80 font-medium">About</a>
+                <a href="index.html#services" class="link link-animated text-base-content/80 font-medium">Services</a>
+                <a href="index.html#products" class="link link-animated text-base-content/80 font-medium">Products</a>
+                <a href="index.html#faqs" class="link link-animated text-base-content/80 font-medium">FAQ</a>
+              </nav>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="mx-auto max-w-[1280px] px-4 py-8 sm:px-6 lg:px-8">
+            <div class="text-base-content text-center text-base">
+              &copy;2025
+              <a href="index.html" class="text-success">Grova Export</a>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+      <script src="assets/dist/libs/tailwindcss-intersect/dist/observer.min.js"></script>
+      <script src="assets/dist/libs/flatpickr/dist/flatpickr.js"></script>
+      <script src="assets/dist/libs/flyonui/flyonui.js"></script>
+      <script src="assets/dist/js/theme-utils.js"></script>
+      <script src="assets/dist/js/main.js"></script>
+
+      <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            const row = document.querySelector('.thumb-row');
+            const btnLeft = document.querySelector('.thumb-arrow.left');
+            const btnRight = document.querySelector('.thumb-arrow.right');
+            const mainImage = document.getElementById('mainProductImage');
+            const thumbs = Array.from(document.querySelectorAll('.thumb-btn'));
+
+            if (!row || !btnLeft || !btnRight || !mainImage || !thumbs.length) return;
+
+            let currentIndex = thumbs.findIndex(function (item) {
+              return item.classList.contains('active');
+            });
+
+            if (currentIndex < 0) currentIndex = 0;
+
+            function setActiveThumb(index) {
+              if (index < 0) index = thumbs.length - 1;
+              if (index >= thumbs.length) index = 0;
+
+              currentIndex = index;
+
+              thumbs.forEach(function (item) {
+                item.classList.remove('active');
+              });
+
+              const activeThumb = thumbs[currentIndex];
+              const newImage = activeThumb.getAttribute('data-image');
+
+              activeThumb.classList.add('active');
+
+              if (newImage) {
+                mainImage.src = newImage;
+              }
+
+              activeThumb.scrollIntoView({
+                behavior: 'smooth',
+                inline: 'center',
+                block: 'nearest'
+              });
+            }
+
+            thumbs.forEach(function (thumb, index) {
+              thumb.addEventListener('click', function () {
+                setActiveThumb(index);
+              });
+            });
+
+            btnLeft.addEventListener('click', function () {
+              setActiveThumb(currentIndex - 1);
+            });
+
+            btnRight.addEventListener('click', function () {
+              setActiveThumb(currentIndex + 1);
+            });
+          });
+          </script>
+          <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const tabs = document.querySelectorAll('.detail-tab');
+    const panels = document.querySelectorAll('.detail-panel');
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        const target = tab.getAttribute('data-tab');
+
+        tabs.forEach(function (item) {
+          item.classList.remove('active');
+        });
+
+        panels.forEach(function (panel) {
+          panel.classList.remove('active');
+        });
+
+        tab.classList.add('active');
+
+        const targetPanel = document.getElementById('tab-' + target);
+        if (targetPanel) {
+          targetPanel.classList.add('active');
+        }
+      });
+    });
+  });
+  </script>
+    </body>
+  </html>

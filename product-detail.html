@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Product Detail | Grova Export</title>
+    <title>Grova Charcoal</title>
 
     <meta name="description" content="Product detail page" />
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="assets/img/avatar.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -337,17 +337,20 @@
       width: 100%;
     }
 
-    #navbar-block-4.mobile-open {
-      display: block !important;
-      height: auto !important;
-      overflow: visible !important;
-      margin-top: 0.75rem;
-      padding: 1rem;
-      border-radius: 1rem;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: var(--color-base-100, #1f1b2d);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
-    }
+#navbar-block-4.mobile-open {
+  display: block !important;
+  position: relative;
+  z-index: 50;
+  width: 100%;
+  height: auto !important;
+  overflow: visible !important;
+  margin-top: 0.75rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--color-base-100, #1f1b2d);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+}
 
     #navbar-block-4.mobile-open .text-base-content {
       gap: 0.25rem;
@@ -420,7 +423,7 @@
 </style>
 <style>
   .products-page {
-    background: #ead8c9;
+    background: #3f3b48;
     padding-top: 160px;
   }
 
@@ -506,12 +509,12 @@
               </div>
             </div>
 
-            <div id="navbar-block-4" class="lg:navbar-center transition-height collapse hidden grow overflow-hidden font-medium duration-300 lg:flex">
+            <div id="navbar-block-4" class="hidden grow overflow-hidden font-medium duration-300 lg:flex lg:navbar-center">
               <div class="text-base-content flex gap-6 text-xl max-lg:mt-4 max-lg:flex-col lg:items-center">
                 <a href="index.html#home" class="hover:text-success nav-link">Home</a>
                 <a href="index.html#about-us" class="hover:text-success nav-link">About Us</a>
                 <a href="index.html#services" class="hover:text-success nav-link">Services</a>
-                <a href="index.html#products" class="text-success nav-link">Products</a>
+                <a href="product-detail.html" class="text-success nav-link">Products</a>
                 <a href="index.html#documents" class="hover:text-success nav-link">Documents</a>
                 <a href="index.html#faqs" class="hover:text-success nav-link">FAQS</a>
               </div>
@@ -545,17 +548,17 @@
         <div class="products-grid" id="productGrid">
           <article class="product-card" data-category="other">
             <div class="product-card-media">
-              <img src="assets/img/black-charcoal.png" alt="Shisha Charcoal" />
+              <img src="assets/img/black-charcoal.png" alt="Mangrove Charcoal" />
               <span class="product-badge">Hot</span>
             </div>
             <div class="product-card-body">
-              <p class="product-card-category">Others Product</p>
-              <h3 class="product-card-title">Shisha Charcoal</h3>
+              <p class="product-card-category">black Charcoal</p>
+              <h3 class="product-card-title">Mangrove Charcoal</h3>
               <p class="product-card-desc">
                 Coconut charcoal is produced from natural coconut shells, an abundant raw material.
               </p>
               <div class="product-card-actions">
-                <a href="product-detail.html" class="btn btn-success">View Detail</a>
+                <a href="Mangrove-Detail.html" class="btn btn-success">View Detail</a>
               </div>
             </div>
           </article>
@@ -567,7 +570,7 @@
             </div>
             <div class="product-card-body">
               <p class="product-card-category">Others Product</p>
-              <h3 class="product-card-title">Sawdust Charcoal</h3>
+              <h3 class="product-card-title">Coconut Charcoal</h3>
               <p class="product-card-desc">
                 Sawdust charcoal is produced from sawdust collected from wood processing factories.
               </p>
@@ -683,102 +686,6 @@
     <script src="assets/dist/js/theme-utils.js"></script>
     <script src="assets/dist/js/main.js"></script>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const toggleBtn = document.getElementById('mobileMenuToggle');
-        const menu = document.getElementById('navbar-block-4');
 
-        if (toggleBtn && menu) {
-          let backdrop = null;
-          const isMobile = () => window.innerWidth < 1024;
-
-          function syncIcons(open) {
-            const icons = toggleBtn.querySelectorAll('span');
-            if (icons.length >= 2) {
-              icons[0].classList.toggle('hidden', open);
-              icons[1].classList.toggle('hidden', !open);
-            }
-            toggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-          }
-
-          function closeMenu() {
-            menu.classList.remove('mobile-open');
-            if (isMobile()) {
-              menu.classList.add('hidden');
-              document.body.style.overflow = '';
-            }
-            if (backdrop) {
-              backdrop.remove();
-              backdrop = null;
-            }
-            syncIcons(false);
-          }
-
-          function openMenu() {
-            if (!isMobile()) return;
-            menu.classList.remove('hidden');
-            menu.classList.add('mobile-open');
-            document.body.style.overflow = 'hidden';
-            if (!backdrop) {
-              backdrop = document.createElement('div');
-              backdrop.className = 'mobile-menu-backdrop';
-              backdrop.addEventListener('click', closeMenu);
-              document.body.appendChild(backdrop);
-            }
-            syncIcons(true);
-          }
-
-          toggleBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            const isOpen = menu.classList.contains('mobile-open');
-            if (isOpen) closeMenu();
-            else openMenu();
-          });
-
-          menu.querySelectorAll('a').forEach(function (link) {
-            link.addEventListener('click', function () {
-              if (isMobile()) closeMenu();
-            });
-          });
-
-          window.addEventListener('resize', function () {
-            if (!isMobile()) {
-              menu.classList.remove('hidden', 'mobile-open');
-              document.body.style.overflow = '';
-              if (backdrop) {
-                backdrop.remove();
-                backdrop = null;
-              }
-              syncIcons(false);
-            } else if (!menu.classList.contains('mobile-open')) {
-              menu.classList.add('hidden');
-              syncIcons(false);
-            }
-          });
-
-          if (isMobile()) {
-            menu.classList.add('hidden');
-            syncIcons(false);
-          }
-        }
-
-        const mainImage = document.getElementById('mainProductImage');
-        const thumbs = document.querySelectorAll('.product-gallery-thumb');
-
-        thumbs.forEach(function (thumb) {
-          thumb.addEventListener('click', function () {
-            const newImage = thumb.getAttribute('data-image');
-            mainImage.src = newImage;
-
-            thumbs.forEach(function (item) {
-              item.classList.remove('active');
-            });
-
-            thumb.classList.add('active');
-          });
-        });
-      });
-    </script>
   </body>
 </html>
