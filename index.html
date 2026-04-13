@@ -24,6 +24,21 @@
     <!-- build:css -->
     <link rel="stylesheet" href="assets/dist/css/output.css" />
     
+    <style>
+  :root,
+  html[data-theme="light"],
+  html[data-theme="dark"] {
+    --color-primary: #22c55e;
+    --color-primary-content: #16a34a;
+    --color-success: #22c55e;
+    --color-success-content: #ffffff;
+  }
+
+  .nav-link.active,
+  .nav-link.current-page {
+    color: #22c55e !important;
+  }
+</style>
       <style>
   html {
     scroll-behavior: auto;
@@ -342,12 +357,12 @@
       </div>
       <div id="navbar-block-4" class="lg:navbar-center transition-height collapse hidden grow overflow-hidden font-medium duration-300 lg:flex">
         <div class="text-base-content flex gap-6 text-xl max-lg:mt-4 max-lg:flex-col lg:items-center">
-          <a href="#home" class="hover:text-success nav-link">Home</a>
-          <a href="#about-us" class="hover:text-success nav-link">About Us</a>
-          <a href="#services" class="hover:text-success nav-link">Services</a>
+          <a href="#home" class="nav-link hover:text-success">Home</a>
+          <a href="#about-us" class="nav-link hover:text-success">About Us</a>
+          <a href="#services" class="nav-link hover:text-success">Services</a>
           <a href="product-detail.html" class="hover:text-success nav-link">Products</a>
-          <a href="#documents" class="hover:text-success nav-link">Documents</a>
-          <a href="#faqs" class="hover:text-success nav-link">FAQS</a>
+          <a href="#documents" class="nav-link hover:text-success">Documents</a>
+          <a href="#faqs" class="nav-link hover:text-success">FAQS</a>         
         </div>
       </div>
       <div class="navbar-end max-lg:hidden">
