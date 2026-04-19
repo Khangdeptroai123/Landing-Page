@@ -170,7 +170,7 @@
     border-radius: 14px;
     background: transparent;
     color: #b6541b;
-    text-align: left;
+    text-align: center;
     font-weight: 600;
     padding: 1rem 1.25rem;
     transition: 0.2s ease;
@@ -211,7 +211,17 @@
     object-fit: cover;
     display: block;
   }
-
+  .product-soldout {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #f60000;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0.85rem 1rem;
+    border-bottom-left-radius: 14px;
+  }
   .product-badge {
     position: absolute;
     top: 0;
@@ -536,23 +546,23 @@
           <h2 class="products-sidebar-title">Product Categories</h2>
           <div class="products-sidebar-line"></div>
 
-          <div class="space-y-4">
-            <button class="category-btn is-active" data-filter="all">All Products</button>
-            <button class="category-btn" data-filter="black">Black Charcoal</button>
-            <button class="category-btn" data-filter="white">White Charcoal</button>
-            <button class="category-btn" data-filter="other">Others Product</button>
-          </div>
+          <div class="space-y-4 flex flex-col items-center">
+  <button class="category-btn text-center is-active" data-filter="all">All Products</button>
+  <button class="category-btn text-center" data-filter="black">HARDWOOD</button>
+  <button class="category-btn text-center" data-filter="white">SOFTWOOD</button>
+  <button class="category-btn text-center" data-filter="other">CHARCOAL BRIQUETTES</button>
+</div>
         </aside>
 
         <!-- Grid -->
         <div class="products-grid" id="productGrid">
-          <article class="product-card" data-category="other">
+          <article class="product-card" data-category="black">
             <div class="product-card-media">
               <img src="assets/img/black-charcoal.png" alt="Mangrove Charcoal" />
               <span class="product-badge">Hot</span>
             </div>
             <div class="product-card-body">
-              <p class="product-card-category">black Charcoal</p>
+              <p class="product-card-category">HARDWOOD CHARCOAL</p>
               <h3 class="product-card-title">Mangrove Charcoal</h3>
               <p class="product-card-desc">
                 Coconut charcoal is produced from natural coconut shells, an abundant raw material.
@@ -562,29 +572,62 @@
               </div>
             </div>
           </article>
-
           <article class="product-card" data-category="other">
+            <div class="product-card-media">
+              <img src="assets/img/anh-bia mangrove br.png" alt="Mangrove Briquette Charcoal" />
+            <span class="product-badge">Hot</span>
+            </div>
+            <div class="product-card-body">
+              <p class="product-card-category"> BRIQUETTES CHARCOAL</p>
+              <h3 class="product-card-title">Mangrove Briquette Charcoal</h3>
+              
+              <p class="product-card-desc">
+                Mangrove Briquette charcoal is produced from high-quality Coffee wood.
+              </p>
+              <div class="product-card-actions">
+                <a href="Mangrove-Briquettes.html" class="btn btn-success">View Detail</a>
+              </div>
+            </div>
+          </article>
+          <article class="product-card" data-category="other">
+            <div class="product-card-media">
+              <img src="assets/img/anh bia coconut bri.png" alt="Coconut Briquette Charcoal" />
+              <span class="product-badge">Hot</span>
+            </div>
+            <div class="product-card-body">
+              <p class="product-card-category">BRIQUETTES CHARCOAL</p>
+              <h3 class="product-card-title">Coconut Briquette Charcoal</h3>
+              <p class="product-card-desc">
+                Coconut Briquette charcoal is produced from high-quality Coffee wood.
+              </p>
+              <div class="product-card-actions">
+                <a href="Coconut-Briquettes.html" class="btn btn-success">View Detail</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="black">
             <div class="product-card-media">
               <img src="assets/img/than gáo dừa.png" alt="Sawdust Charcoal" />
             </div>
             <div class="product-card-body">
-              <p class="product-card-category">Others Product</p>
-              <h3 class="product-card-title">Kaya Charcoal</h3>
+              <p class="product-card-category">HARDWOOD CHARCOAL</p>
+              <h3 class="product-card-title">Coconut Charcoal</h3>
               <p class="product-card-desc">
-                Kaya charcoal is produced from Kaya collected from wood processing factories.
+                Coconut charcoal is produced from Coconut collected from wood processing factories.
               </p>
               <div class="product-card-actions">
-                <a href="Kaya-Charcoal.html" class="btn btn-success">View Detail</a>
+                <a href="Coconut-Charcoal.html" class="btn btn-success">View Detail</a>
               </div>
             </div>
           </article>
 
           <article class="product-card" data-category="white">
             <div class="product-card-media">
-              <img src="assets/img/coffee charcoal.png" alt="Lychee Charcoal" />
+              <img src="assets/img/white-charcoal.png" alt="Lychee Charcoal" />
             </div>
             <div class="product-card-body">
-              <p class="product-card-category">Black Charcoal</p>
+              <p class="product-card-category">SOFTWOOD CHARCOAL</p>
               <h3 class="product-card-title">Coffee Charcoal</h3>
               <p class="product-card-desc">
                 Coffee charcoal is produced from high-quality Coffee wood.
@@ -595,12 +638,12 @@
             </div>
           </article>
 
-          <article class="product-card" data-category="black">
+          <article class="product-card" data-category="white">
             <div class="product-card-media">
               <img src="assets/img/Eucalyptus charcoal.png" alt="Eucalyptus Charcoal" />
             </div>
             <div class="product-card-body">
-              <p class="product-card-category">Black Charcoal</p>
+              <p class="product-card-category">SOFTWOOD CHARCOAL</p>
               <h3 class="product-card-title">Eucalyptus Charcoal</h3>
               <p class="product-card-desc">
                 Vietnam eucalyptus charcoal is made from carefully selected hardwood.
@@ -611,16 +654,16 @@
             </div>
           </article>
 
-          <article class="product-card" data-category="white">
+          <article class="product-card" data-category="black">
             <div class="product-card-media">
-              <img src="assets/img/kaya charcoal.png" alt="Kaya Charcoal" />
+              <img src="assets/img/khaya-bìa.png" alt="Kaya Charcoal" />
               
             </div>
             <div class="product-card-body">
-              <p class="product-card-category">Black Charcoal</p>
-              <h3 class="product-card-title">Kaya Charcoal</h3>
+              <p class="product-card-category">HARDWOOD CHARCOAL</p>
+              <h3 class="product-card-title">Khaya Charcoal</h3>
               <p class="product-card-desc">
-                Our Kaya Charcoal is produced from carefully selected eucalyptus wood.
+                Our Khaya Charcoal is produced from carefully selected eucalyptus wood.
               </p>
               <div class="product-card-actions">
                 <a href="Kaya-Charcoal.html" class="btn btn-success">View Detail</a>
@@ -628,18 +671,35 @@
             </div>
           </article>
 
-          <article class="product-card" data-category="white">
+          <article class="product-card" data-category="black">
             <div class="product-card-media">
               <img src="assets/img/longan-charcoal.jpg" alt="Longan Charcoal" />
+              <span class="product-soldout">Sold Out</span>
             </div>
             <div class="product-card-body">
-              <p class="product-card-category">Black Charcoal</p>
+              <p class="product-card-category">HARDWOOD CHARCOAL</p>
               <h3 class="product-card-title">Longan Charcoal</h3>
               <p class="product-card-desc">
                 Our Longan charcoal is produced from carefully selected eucalyptus wood.
               </p>
               <div class="product-card-actions">
-                <a href="Longan-Charcoal.html" class="btn btn-success">View Detail</a>
+                <a href="" class="btn">View Detail</a>
+              </div>
+            </div>
+          </article>
+          <article class="product-card" data-category="white">
+            <div class="product-card-media">
+              <img src="assets/img/eucalyptus.png" alt="Eucalyptus White Charcoal" />
+              <span class="product-soldout">Sold Out</span>
+            </div>
+            <div class="product-card-body">
+              <p class="product-card-category">WHITE CHARCOAL</p>
+              <h3 class="product-card-title">Eucalyptus White Charcoal</h3>
+              <p class="product-card-desc">
+                Our Eucalyptus White Charcoal is produced from carefully selected Eucalyptus White wood.
+              </p>
+              <div class="product-card-actions">
+                <a href="" class="btn ">View Detail</a>
               </div>
             </div>
           </article>

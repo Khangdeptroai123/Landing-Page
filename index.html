@@ -23,8 +23,9 @@
     
     <!-- build:css -->
     <link rel="stylesheet" href="assets/dist/css/output.css" />
-    
+   
     <style>
+      
   :root,
   html[data-theme="light"],
   html[data-theme="dark"] {
@@ -324,7 +325,94 @@
         }
       })();
     </script>
+    <style>
+  #order-process {
+    background: #3B3542;
+  }
+  .process-title {
+  color: #fcfcfc;
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+}
 
+  #order-process .process-card {
+    overflow: hidden;
+    border-radius: 24px;
+    background: #ffffff;
+    border: 1px solid #ece7df;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+  }
+
+  #order-process .process-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  #order-process .process-image-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+
+  #order-process .process-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  #order-process .process-card:hover .process-image {
+    transform: scale(1.04);
+  }
+
+  #order-process .process-step {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #c79a53;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 10px 18px;
+    border-bottom-right-radius: 18px;
+  }
+
+  #order-process .process-body {
+    padding: 22px 26px 24px;
+  }
+
+  #order-process .process-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  #order-process .process-icon {
+    color: #c79a53;
+    font-size: 28px;
+    line-height: 1;
+    display: inline-flex;
+  }
+
+  #order-process .process-name {
+    margin: 0;
+    color: #8b6336;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  #order-process .process-desc {
+    margin: 0;
+    color: #6b7280;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+</style>
   </head>
 
   <body>
@@ -803,69 +891,109 @@
   </div>
 </section>
 
-        <!-- Blog Component -->
-        <section id="" class="scroll-mt-32 md:scroll-mt-40">
-          <div class="bg-base-100 py-8 sm:py-16 lg:py-24">
-            <div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
-              <!-- Section Header -->
-              <div class="mb-12 space-y-4 text-center sm:mb-16 lg:mb-24">
-                <h2 class="text-base-content text-2xl font-semibold md:text-3xl lg:text-4xl">Crafting Moments, Serving You</h2>
-                <p class="text-base-content/80 text-xl">From unforgettable flavors to seamless service, we’re here to make every meal feel special. Whether you dine in, take out, or order online we’ve got your cravings covered.</p>
-              </div>
-              <!-- Blog Grid -->
-              <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                <!-- Blog Card 1 -->
-                <div class="card card-border shadow-none">
-                  <figure>
-                    <img src="assets/img/free-blog-1.png" alt="Vegetable Market" />
-                  </figure>
-                  <div class="card-body gap-3">
-                    <h5 class="card-title text-xl">Buffet Service</h5>
-                    <p class="mb-5">Navigate effortlessly with our intuitive design, optimized for all devices. Enjoy a seamless experience whether you're on a computer or mobile device.</p>
-                    <div class="card-actions">
-                      <a href="product-detail.html" class="btn btn-success btn-gradient">
-                        Read More
-                        <span class="icon-[tabler--arrow-right] size-5 rtl:rotate-180"></span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Blog Card 2 -->
-                <div class="card card-border shadow-none">
-                  <figure>
-                    <img src="assets/img/free-blog-2.png" alt="Delivery Service" />
-                  </figure>
-                  <div class="card-body gap-3">
-                    <h5 class="card-title text-xl">Food delivery</h5>
-                    <p class="mb-5">Enjoy a safe shopping experience with multiple payment options and SSL encryption. Your personal and financial information is always protected.</p>
-                    <div class="card-actions">
-                      <a href="product-detail.html" class="btn btn-success btn-gradient">
-                        Read More
-                        <span class="icon-[tabler--arrow-right] size-5 rtl:rotate-180"></span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Blog Card 3 -->
-                <div class="card card-border shadow-none">
-                  <figure>
-                    <img src="assets/img/free-blog-3.png" alt="Cafeteria" />
-                  </figure>
-                  <div class="card-body gap-3">
-                    <h5 class="card-title text-xl">Cafeteria</h5>
-                    <p class="mb-5">Find products quickly with advanced filters, sorting options, and suggestion. Save time and effortlessly locate exactly what you need with ease.</p>
-                    <div class="card-actions">
-                      <a href="product-detail.html" class="btn btn-success btn-gradient">
-                          Read More
-                          <span class="icon-[tabler--arrow-right] size-5 rtl:rotate-180"></span>
-                        </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+<section id="order-process" class="scroll-mt-32 md:scroll-mt-40">
+  <div class="py-10 sm:py-16 lg:py-20">
+    <div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-center py-12">
+  <h2 class="process-title text-center">Production Process</h2>
+</div>
+    <br>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <!-- STEP 1 -->
+        <div class="process-card">
+          <div class="process-image-wrap">
+            <img src="assets/img/anh1.jpg" alt="Purchase" class="process-image" />
+            <span class="process-step">STEP 1</span>
           </div>
-        </section>
+          <div class="process-body">
+            <div class="process-head">
+              <span class="icon-[tabler--leaf] process-icon"></span>
+              <h3 class="process-name">Purchase</h3>
+            </div>
+            <p class="process-desc">Selecting the best red bark from farmers</p>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="process-card">
+          <div class="process-image-wrap">
+            <img src="assets/img/anh2.jpg" alt="Dry" class="process-image" />
+            <span class="process-step">STEP 2</span>
+          </div>
+          <div class="process-body">
+            <div class="process-head">
+              <span class="icon-[tabler--sun] process-icon"></span>
+              <h3 class="process-name">Dry</h3>
+            </div>
+            <p class="process-desc">Natural sun drying to reduce moisture</p>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="process-card">
+          <div class="process-image-wrap">
+            <img src="assets/img/anh3.jpg" alt="Packing" class="process-image" />
+            <span class="process-step">STEP 3</span>
+          </div>
+          <div class="process-body">
+            <div class="process-head">
+              <span class="icon-[tabler--package] process-icon"></span>
+              <h3 class="process-name">Packing</h3>
+            </div>
+            <p class="process-desc">Stockpiling and aging the raw materials</p>
+          </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="process-card">
+          <div class="process-image-wrap">
+            <img src="assets/img/anh4.jpeg" alt="Warehouse" class="process-image" />
+            <span class="process-step">STEP 4</span>
+          </div>
+          <div class="process-body">
+            <div class="process-head">
+              <span class="icon-[tabler--building-warehouse] process-icon"></span>
+              <h3 class="process-name">Warehouse</h3>
+            </div>
+            <p class="process-desc">Transporting to our central warehouse</p>
+          </div>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="process-card">
+          <div class="process-image-wrap">
+            <img src="assets/img/anh5.jpeg" alt="Grinder" class="process-image" />
+            <span class="process-step">STEP 5</span>
+          </div>
+          <div class="process-body">
+            <div class="process-head">
+              <span class="icon-[tabler--settings] process-icon"></span>
+              <h3 class="process-name">Grinder</h3>
+            </div>
+            <p class="process-desc">Fine grinding to specific mesh sizes</p>
+          </div>
+        </div>
+
+        <!-- STEP 6 -->
+        <div class="process-card">
+          <div class="process-image-wrap">
+            <img src="assets/img/anh6(xe cont).jpg" alt="Shipping" class="process-image" />
+            <span class="process-step">STEP 6</span>
+          </div>
+          <div class="process-body">
+            <div class="process-head">
+              <span class="icon-[tabler--truck-delivery] process-icon"></span>
+              <h3 class="process-name">Shipping</h3>
+            </div>
+            <p class="process-desc">Loading containers for export</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<br>
+</section>
+
         <!-- Export Market -->
         <section class="export-market">
   <div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">

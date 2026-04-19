@@ -123,6 +123,247 @@
     </script>
 
         <style>
+          .packaging-section {
+  margin-top: 0.5rem;
+}
+
+.packaging-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #0f2442;
+  margin: 0 0 2rem;
+  line-height: 1.15;
+}
+
+.packaging-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.packaging-card {
+  background: #efefef;
+  border-radius: 22px;
+  padding: 3rem;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.packaging-card h3 {
+  margin: 0 0 2rem;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #0f2442;
+  line-height: 1.2;
+}
+
+.packaging-label {
+  margin: 0 0 1.25rem;
+  font-size: 1.5rem;
+  color: #314d73;
+  line-height: 1.5;
+}
+
+.packaging-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.packaging-tags span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  background: #f3dfbf;
+  color: #b14f00;
+  font-size: 1.05rem;
+  font-weight: 700;
+  min-width: 92px;
+}
+
+.packaging-desc {
+  margin: auto 0 0;
+  font-size: 1.3rem;
+  color: #223f68;
+  line-height: 1.7;
+}
+
+@media (max-width: 991px) {
+  .packaging-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .packaging-title {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .packaging-card {
+    padding: 2rem 1.5rem;
+    min-height: auto;
+  }
+
+  .packaging-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .packaging-label {
+    font-size: 1.15rem;
+  }
+
+  .packaging-desc {
+    font-size: 1.05rem;
+  }
+}
+          .payment-faq-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: stretch;
+  margin-top: 1rem;
+}
+
+.faq-card {
+  background: #f5f0ea;
+  border: 1px solid #e7ddd2;
+  border-radius: 24px;
+  padding: 2.5rem 2.75rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+}
+
+.faq-card-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #8a612f;
+  margin: 0 0 2rem;
+  line-height: 1.2;
+}
+
+.faq-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.faq-item + .faq-item {
+  margin-top: 2rem;
+}
+
+.faq-icon {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 999px;
+  border: 3px solid #c49a56;
+  color: #c49a56;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.2rem;
+  line-height: 1;
+  margin-top: 0.2rem;
+}
+
+.faq-item h4 {
+  margin: 0 0 0.35rem;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #8a612f;
+  line-height: 1.3;
+}
+
+.faq-item p {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #2f4867;
+  line-height: 1.7;
+}
+
+.payment-card {
+  background: #7b5a31;
+  border-radius: 24px;
+  padding: 2.8rem 2.75rem;
+  color: #fff;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.payment-card h3 {
+  margin: 0;
+  font-size: 2.3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.payment-subtitle {
+  margin-top: 0.75rem !important;
+  color: #f7dfc1 !important;
+}
+
+.payment-buttons {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 2.25rem;
+}
+
+.payment-buttons span {
+  min-width: 116px;
+  text-align: center;
+  padding: 0.95rem 1.5rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.28);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.1rem;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+@media (max-width: 991px) {
+  .payment-faq-wrap {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .faq-card,
+  .payment-card {
+    padding: 2rem 1.5rem;
+    border-radius: 22px;
+  }
+
+  .faq-card-title,
+  .payment-card h3 {
+    font-size: 1.7rem;
+  }
+
+  .faq-item h4 {
+    font-size: 1.25rem;
+  }
+
+  .faq-item p {
+    font-size: 1rem;
+  }
+
+  .payment-buttons {
+    justify-content: flex-start;
+  }
+
+  .payment-buttons span {
+    min-width: 96px;
+    padding: 0.85rem 1.2rem;
+  }
+}
     .main-image-wrap {
       width: 100%;
       height: 420px;
@@ -1208,21 +1449,21 @@
       <button class="detail-tab" data-tab="material">Material</button>
       <button class="detail-tab" data-tab="packaging">Packaging</button>
       <button class="detail-tab" data-tab="payment">Payment terms</button>
-      <button class="detail-tab" data-tab="faq">FAQ</button>
+  
     </div>
 
     <div class="detail-panel active" id="tab-specification">
       <div class="spec-grid">
-        <p><strong>Burning time:</strong> 3.5 - 4 hours</p>
-        <p><strong>Calorific value:</strong> 7504 kcal/kg</p>
-        <p><strong>Fixed carbon content:</strong> 76.01%</p>
-        <p><strong>Ash content:</strong> 2.04%</p>
-        <p><strong>Moisture content:</strong> 2.39%</p>
-        <p><strong>Volatile matter content:</strong> 28.8%</p>
-        <p><strong>Shape:</strong> Round stick</p>
-        <p><strong>Diameter:</strong> 3-5 cm, 6-10 cm</p>
-        <p><strong>Length:</strong> 12-20 cm</p>
-        <p><strong>Capacity:</strong> 3000 tons/month</p>
+        <p><strong>► Burning time:</strong> 3.5 - 4 hours</p>
+        <p><strong>► Calorific value:</strong> 7504 kcal/kg</p>
+        <p><strong>► Fixed carbon content:</strong> 76.01%</p>
+        <p><strong>► Ash content:</strong> 2.04%</p>
+        <p><strong>► Moisture content:</strong> 2.39%</p>
+        <p><strong>► Volatile matter content:</strong> 28.8%</p>
+        <p><strong>► Shape:</strong> Round stick</p>
+        <p><strong>► Diameter:</strong> 3-5 cm, 6-10 cm</p>
+        <p><strong>► Length:</strong> 12-20 cm</p>
+        <p><strong>► Capacity:</strong> 3000 tons/month</p>
       </div>
     </div>
 
@@ -1234,29 +1475,73 @@
       </div>
     </div>
 
-    <div class="detail-panel" id="tab-packaging">
-      <div class="spec-grid">
-        <p><strong>Packing:</strong> PP bag / carton box</p>
-        <p><strong>Custom packing:</strong> Available</p>
-        <p><strong>OEM:</strong> Supported</p>
-      </div>
-    </div>
+   <div class="detail-panel" id="tab-packaging">
+  <section class="packaging-section">
 
-    <div class="detail-panel" id="tab-payment">
-      <div class="spec-grid">
-        <p><strong>Payment:</strong> T/T, L/C</p>
-        <p><strong>Lead time:</strong> Negotiable</p>
-      </div>
-    </div>
+    <div class="packaging-grid">
+      <div class="packaging-card">
+        <h3>PP Bags</h3>
+        <p class="packaging-label">Available sizes:</p>
 
-    <div class="detail-panel" id="tab-faq">
-      <div class="spec-grid">
-        <p><strong>Q:</strong> Do you support samples?</p>
-        <p><strong>A:</strong> Yes, free samples are available.</p>
-        <p><strong>Q:</strong> Do you support OEM?</p>
-        <p><strong>A:</strong> Yes, OEM service is supported.</p>
+        <div class="packaging-tags">
+          <span>20kg</span>
+          <span>25kg</span>
+          <span>30kg</span>
+        </div>
+
+        <p class="packaging-desc">Heavy-duty polypropylene bags</p>
+      </div>
+
+      <div class="packaging-card">
+        <h3>Custom Packaging</h3>
+        <p class="packaging-label">Available sizes:</p>
+
+        <div class="packaging-tags">
+          <span>Various</span>
+        </div>
+
+        <p class="packaging-desc">Custom branding available</p>
       </div>
     </div>
+  </section>
+</div>
+
+<div class="detail-panel" id="tab-payment">
+  <div class="payment-faq-wrap">
+    <div class="payment-card">
+      <h3>Delivery right time</h3>
+      <h3 class="payment-subtitle">Payment Term</h3>
+
+      <div class="payment-buttons">
+        <span>T/T</span>
+        <span>L/C</span>
+        <span>D/P</span>
+      </div>
+    </div>
+    <div class="faq-card">
+      
+      <h3 class="faq-card-title">How can we guarantee quality?</h3>
+
+      <div class="faq-item">
+        <div class="faq-icon">✓</div>
+        <div>
+          <h4>Pre-production sample</h4>
+          <p>Sample for approval before full production.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-icon">✓</div>
+        <div>
+          <h4>Final inspection</h4>
+          <p>Last check before shipping.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+ 
     <!-- ===== GALLERY SECTION ===== -->
   <section style="margin-top: 4rem;">
     <h2 style="font-size:2.4rem;font-weight:800;text-align:center;margin-bottom:1rem;">
