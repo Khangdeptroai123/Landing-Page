@@ -9,12 +9,12 @@
     <meta name="description" content=" FlyonUIPro is the best FlyonUI dashboard for responsive web apps. Streamline your app development process with ease." />
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/img/avatar.png" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&ampdisplay=swap" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!-- Core CSS -->
     <!-- endbuild -->
 
@@ -25,7 +25,33 @@
     <link rel="stylesheet" href="assets/dist/css/output.css" />
    
     <style>
-      
+        .floating-contact {
+  position: fixed;
+  right: 18px;
+  bottom: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 9999;
+}
+
+.floating-contact a {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.floating-icon {
+  font-size: 24px;
+  color: #fff;
+  line-height: 1;
+}
   :root,
   html[data-theme="light"],
   html[data-theme="dark"] {
@@ -1111,21 +1137,19 @@
                   <div class="space-y-6 lg:col-span-3">
                     <div class="border-base-content/20 rounded-box border p-6 text-center">
                       <h3 class="text-base-content mb-4 text-xl font-semibold">Email/Phone</h3>
-                      <p class="text-base-content/80 mb-2 break-all">johndoe@gmail.com</p>
-                      <p class="text-base-content/80">+148 589 2001 2466</p>
+                      <p class="text-base-content/80 mb-2 break-all">info.grovacompany@gmail.com</p>
+                      <p class="text-base-content/80">+84 337-796-803</p>
                     </div>
                     <div class="border-base-content/20 rounded-box border p-6 text-center">
                       <h3 class="text-base-content mb-4 text-xl font-semibold">Our Location</h3>
 
                       <p class="text-base-content/80 mb-4">
-                        Office 149,<br>
-                        450 South Brand Brooklyn<br>
-                        San Diego County, CA 91905, USA
+                        11, Road 119, Nam Long Residential Area, Phuoc Long Ward, Ho Chi Minh City, Vietnam.
                       </p>
 
                       <!-- Google Map -->
                       <iframe
-                        src="https://www.google.com/maps?q=10.762622,106.660172&hl=vi&z=14&output=embed"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5204.962698267687!2d106.77938367614867!3d10.808957689341845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317526f286ea47fd%3A0x417762d18fd5a7ac!2zS0RDIE5hbSBMb25nLCAxMSDEkMaw4budbmcgMTE5LCBQaMaw4bubYyBMb25nIEIsIFBoxrDhu5tjIExvbmcsIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e1!3m2!1svi!2s!4v1776595328565!5m2!1svi!2s"
                         width="100%"
                         height="250"
                         style="border:0; border-radius:12px;"
@@ -1291,9 +1315,7 @@
       </main>
 
       <footer>
-        <div class="mx-auto max-w-[1280px] px-4 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
           <div class="flex items-center justify-between gap-3 max-md:flex-col">
-            <a href="index.html" class="text-base-content flex items-center gap-3 text-xl font-semibold">
               <span class="text-success">
                 <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g clip-path="url(#clip0_18078_104881)">
@@ -1310,39 +1332,6 @@
                   </g>                
                 </svg>
               </span>
-
-            </a>
-            <nav class="flex items-center gap-6">
-              <a href="#about-us" class="link link-animated text-base-content/80 font-medium">About</a>
-              <a href="#services" class="link link-animated text-base-content/80 font-medium">Services</a>
-              <a href="#team" class="link link-animated text-base-content/80 font-medium">Team</a>
-              <a href="#faq" class="link link-animated text-base-content/80 font-medium">FAQ</a>
-            </nav>
-            <div class="text-base-content flex h-5 gap-4">
-              <a href="#!" rel="noopener noreferrer" aria-label="Discord">
-                <span class="icon-[tabler--brand-discord] size-5"></span>
-              </a>
-              <a href="#!" rel="noopener noreferrer" aria-label="Twitter">
-                <span class="icon-[tabler--brand-x] size-5"></span>
-              </a>
-              <a href="#!" rel="noopener noreferrer" aria-label="Github">
-                <span class="icon-[tabler--brand-github] size-5"></span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="mx-auto max-w-[1280px] px-4 py-8 sm:px-6 lg:px-8">
-          <div class="text-base-content text-center text-base">
-            &copy;2025
-            <a href="index.html" class="text-success">FlyonUI</a>
-            ,
-            <br class="md:hidden" />
-            Made With ❤️ for better web • Distributed by <a href="https://themewagon.com" target="_blank" class="text-success">ThemeWagon</a>
-          </div>
-        </div>
       </footer>
     </div>
     <!-- / Content -->
@@ -1818,5 +1807,16 @@ if (lightboxStage) {
     renderBolPage();
   });
 </script>
+</script>
+<div id="footer"></div>
+
+<script>
+fetch('footer.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('footer').innerHTML = data;
+  });
+</script>
+
 </body>
 </html>

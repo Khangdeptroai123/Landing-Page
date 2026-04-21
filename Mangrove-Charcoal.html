@@ -15,7 +15,7 @@
 
         <link rel="stylesheet" href="assets/dist/libs/flatpickr/dist/flatpickr.css" />
         <link rel="stylesheet" href="assets/dist/css/output.css" />
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
         <script>
       document.addEventListener('DOMContentLoaded', function () {
         const toggleBtn = document.getElementById('mobileMenuToggle');
@@ -123,6 +123,7 @@
     </script>
 
         <style>
+          
           .packaging-section {
   margin-top: 0.5rem;
 }
@@ -1469,9 +1470,9 @@
 
     <div class="detail-panel" id="tab-material">
       <div class="spec-grid">
-        <p><strong>Main material:</strong> Mangrove wood</p>
-        <p><strong>Origin:</strong> Vietnam</p>
-        <p><strong>Type:</strong> Wood charcoal</p>
+        <p><strong>► Main material:</strong> Mangrove wood</p>
+        <p><strong>► Origin:</strong> Vietnam</p>
+        <p><strong>► Type:</strong> Wood charcoal</p>
       </div>
     </div>
 
@@ -1645,31 +1646,7 @@
       </section>
     </main>
 
-          <footer>
-            <div class="mx-auto max-w-[1280px] px-4 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
-              <div class="flex items-center justify-between gap-3 max-md:flex-col">
-                <a href="index.html" class="text-base-content flex items-center gap-3 text-xl font-semibold">
-                  <span>Grova Export</span>
-                </a>
-
-                <nav class="flex items-center gap-6">
-                  <a href="index.html#about-us" class="link link-animated text-base-content/80 font-medium">About</a>
-                  <a href="index.html#services" class="link link-animated text-base-content/80 font-medium">Services</a>
-                  <a href="index.html#products" class="link link-animated text-base-content/80 font-medium">Products</a>
-                  <a href="index.html#faqs" class="link link-animated text-base-content/80 font-medium">FAQ</a>
-                </nav>
-              </div>
-            </div>
-
-            <div class="divider"></div>
-
-            <div class="mx-auto max-w-[1280px] px-4 py-8 sm:px-6 lg:px-8">
-              <div class="text-base-content text-center text-base">
-                &copy;2025
-                <a href="index.html" class="text-success">Grova Export</a>
-              </div>
-            </div>
-          </footer>
+         
         </div>
         <div id="galleryLightbox"
      style="
@@ -2097,5 +2074,20 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
+<div id="footer"></div>
+
+<script>
+fetch('footer.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('footer').innerHTML = data;
+  });
+</script>
+    <script src="assets/dist/libs/tailwindcss-intersect/dist/observer.min.js"></script>
+    <script src="assets/dist/libs/flatpickr/dist/flatpickr.js"></script>
+    <script src="assets/dist/libs/flyonui/flyonui.js"></script>
+    <script src="assets/dist/js/theme-utils.js"></script>
+    <script src="assets/dist/js/main.js"></script>
       </body>
+      
     </html>

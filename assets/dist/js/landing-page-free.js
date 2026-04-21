@@ -68,3 +68,60 @@ window.addEventListener('load', function () {
     monthSelectorType: 'static'
   })
 })
+document.addEventListener('DOMContentLoaded', () => {
+  const quoteForm = document.getElementById('quoteForm')
+  const submitBtn = document.getElementById('quoteSubmitBtn')
+
+  if (!quoteForm) return
+
+  quoteForm.addEventListener('submit', async function (e) {
+    e.preventDefault()
+
+    const payload = {
+      name: document.getElementById('username')?.value.trim() || '',
+      phone: document.getElementById('userphone')?.value.trim() || '',
+      date: document.getElementById('userdate')?.value.trim() || '',
+      time: document.getElementById('usertime')?.value.trim() || '',
+      message: document.getElementById('usermessage')?.value.trim() || ''
+    }
+
+    if (!payload.name || !payload.phone || !payload.message) {
+      alert('Please enter name, phone and message.')
+      return
+    }
+
+    const originalText = submitBtn ? submitBtn.textContent : ''
+
+    if (submitBtn) {
+      submitBtn.disabled = true
+      submitBtn.textContent = 'Sending...'
+    }
+
+    try {
+      const response = await fetch('/api/quote', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.message || 'Failed to send request')
+      }
+
+      alert('Your request has been sent successfully!')
+      quoteForm.reset()
+    } catch (error) {
+      console.error('Quote form error:', error)
+      alert('Failed to send request. Please try again.')
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false
+        submitBtn.textContent = originalText
+      }
+    }
+  })
+})
