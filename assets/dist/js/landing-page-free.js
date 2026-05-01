@@ -22,10 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }, step)
   }
 
-  counter('count1', 100, 4, 5000, '+')
-  counter('count2', 100, 30, 5000, '+')
-  counter('count3', 0, 100, 5000, '+')
-  counter('count4', 100, 10, 5000, 'k+')
+counter('count1', 0, 4, 1000, '+')
+counter('count2', 25, 30, 1000, '+')
+counter('count3', 95, 100, 1000, '+')
+counter('count4', 5, 10, 1000, 'k+')
 })
 const sections = document.querySelectorAll('section[id]')
 const navLinks = document.querySelectorAll('.nav-link')
