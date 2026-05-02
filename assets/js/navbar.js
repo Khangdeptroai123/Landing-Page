@@ -94,36 +94,45 @@ function initNavbar() {
 
   setActiveNavbarLink();
 }
-
 function setActiveNavbarLink() {
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  let currentPage = window.location.pathname.split('/').pop().toLowerCase();
+
+  // Trường hợp domain gốc: grovacharcoal.com/
+  if (!currentPage) {
+    currentPage = 'index';
+  }
+
+  // Bỏ .html nếu có
+  currentPage = currentPage.replace('.html', '');
+
   const links = document.querySelectorAll('.nav-link');
 
   links.forEach(function (link) {
-    link.classList.remove('text-success');
+    link.classList.remove('text-success', 'is-active');
     link.classList.add('hover:text-success');
   });
 
-  if (
-    currentPage === 'Products.html' ||
-    currentPage.includes('Charcoal') ||
-    currentPage.includes('Briquettes')
-  ) {
+  const isProductPage =
+    currentPage === 'products' ||
+    currentPage.includes('charcoal') ||
+    currentPage.includes('briquettes');
+
+  if (isProductPage) {
     const productsLink = document.querySelector('[data-nav="products"]');
 
     if (productsLink) {
-      productsLink.classList.add('text-success');
+      productsLink.classList.add('text-success', 'is-active');
       productsLink.classList.remove('hover:text-success');
     }
 
     return;
   }
 
-  if (currentPage === 'index.html' || currentPage === '') {
+  if (currentPage === 'index') {
     const homeLink = document.querySelector('[data-nav="home"]');
 
     if (homeLink) {
-      homeLink.classList.add('text-success');
+      homeLink.classList.add('text-success', 'is-active');
       homeLink.classList.remove('hover:text-success');
     }
   }

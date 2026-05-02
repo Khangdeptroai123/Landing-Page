@@ -69,7 +69,9 @@ header {
     gap: 0.25rem;
     font-size: 1rem;
   }
-
+  .nav-link.is-active {
+  color: #22c55e !important;
+}
   #navbar-block-4.mobile-open .nav-link {
     display: block;
     padding: 0.85rem 0.25rem;
