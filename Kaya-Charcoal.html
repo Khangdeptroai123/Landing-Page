@@ -6,122 +6,23 @@
         <meta name="robots" content="noindex, nofollow" />
         <title>GROVA Khaya Charcoal</title>
 <meta name="description" content="Khaya charcoal by GROVA for BBQ, restaurants, grilling, and export markets. Stable heat, low smoke, low odor, and flexible packaging options." />
-        <link rel="icon" type="image/x-icon" href="assets/img/avatar.png" />
+        <link
+  rel="icon"
+  type="image/x-icon"
+  href="https://res.cloudinary.com/dzdcrka45/image/upload/f_auto,q_auto,w_64/avatar"
+/>
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&ampdisplay=swap" rel="stylesheet" />
-        <script src="assets/js/site-config.js"></script>
         <link rel="stylesheet" href="assets/dist/libs/flatpickr/dist/flatpickr.css" />
-        <link rel="stylesheet" href="assets/dist/css/output.css" />
+<link rel="stylesheet" href="assets/dist/css/output.css" />
+<link rel="stylesheet" href="assets/css/navbar.css" />
+
+<script src="assets/js/site-config.js"></script>
+<script src="assets/js/navbar.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-        <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const toggleBtn = document.getElementById('mobileMenuToggle');
-        const menu = document.getElementById('navbar-block-4');
-
-        if (toggleBtn && menu) {
-          let backdrop = null;
-          const isMobile = () => window.innerWidth < 1024;
-
-          function syncIcons(open) {
-            const icons = toggleBtn.querySelectorAll('span');
-            if (icons.length >= 2) {
-              icons[0].classList.toggle('hidden', open);
-              icons[1].classList.toggle('hidden', !open);
-            }
-            toggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-          }
-
-          function closeMenu() {
-            menu.classList.remove('mobile-open');
-            if (isMobile()) {
-              menu.classList.add('hidden');
-              document.body.style.overflow = '';
-            }
-            if (backdrop) {
-              backdrop.remove();
-              backdrop = null;
-            }
-            syncIcons(false);
-          }
-
-          function openMenu() {
-            if (!isMobile()) return;
-            menu.classList.remove('hidden');
-            menu.classList.add('mobile-open');
-            document.body.style.overflow = 'hidden';
-            if (!backdrop) {
-              backdrop = document.createElement('div');
-              backdrop.className = 'mobile-menu-backdrop';
-              backdrop.addEventListener('click', closeMenu);
-              document.body.appendChild(backdrop);
-            }
-            syncIcons(true);
-          }
-
-          toggleBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            const isOpen = menu.classList.contains('mobile-open');
-            if (isOpen) closeMenu();
-            else openMenu();
-          });
-
-          menu.querySelectorAll('a').forEach(function (link) {
-            link.addEventListener('click', function () {
-              if (isMobile()) closeMenu();
-            });
-          });
-
-          window.addEventListener('resize', function () {
-            if (!isMobile()) {
-              menu.classList.remove('hidden', 'mobile-open');
-              document.body.style.overflow = '';
-              if (backdrop) {
-                backdrop.remove();
-                backdrop = null;
-              }
-              syncIcons(false);
-            } else if (!menu.classList.contains('mobile-open')) {
-              menu.classList.add('hidden');
-              syncIcons(false);
-            }
-          });
-
-          if (isMobile()) {
-            menu.classList.add('hidden');
-            syncIcons(false);
-          }
-        }
-
-        const categoryButtons = document.querySelectorAll('.category-btn');
-        const productCards = document.querySelectorAll('.product-card');
-
-        categoryButtons.forEach(function (button) {
-          button.addEventListener('click', function () {
-            const filter = button.getAttribute('data-filter');
-
-            categoryButtons.forEach(function (btn) {
-              btn.classList.remove('is-active');
-            });
-
-            button.classList.add('is-active');
-
-            productCards.forEach(function (card) {
-              const category = card.getAttribute('data-category');
-              if (filter === 'all' || category === filter) {
-                card.style.display = '';
-              } else {
-                card.style.display = 'none';
-              }
-            });
-          });
-        });
-      });
-    </script>
-
-        <style>
+               <style>
           .packaging-section {
   margin-top: 0.5rem;
 }
@@ -628,88 +529,7 @@ flex-direction: column;
         transform: translateY(-2px);
       }
 
-      @media (max-width: 1023px) {
-        header .navbar {
-          min-height: 88px;
-          align-items: center;
-        }
-
-        header .navbar-start {
-          width: 100%;
-          gap: 0.75rem;
-        }
-
-        header .navbar-start > a {
-          min-width: 0;
-          flex: 1 1 auto;
-        }
-
-        header .navbar-start > a img {
-          width: 100% !important;
-          max-width: 220px;
-          height: 72px !important;
-          object-fit: contain !important;
-          object-position: left center !important;
-          display: block;
-        }
-
-        header .navbar-start .lg\:hidden {
-          flex: 0 0 auto;
-          gap: 0.5rem;
-        }
-
-        header .navbar-start .btn-success.btn-sm {
-          white-space: nowrap;
-          padding-left: 0.75rem;
-          padding-right: 0.75rem;
-          font-size: 0.875rem;
-        }
-
-        #navbar-block-4 {
-          width: 100%;
-        }
-
-    #navbar-block-4.mobile-open {
-      display: block !important;
-      position: relative;
-      z-index: 50;
-      width: 100%;
-      height: auto !important;
-      overflow: visible !important;
-      margin-top: 0.75rem;
-      padding: 1rem;
-      border-radius: 1rem;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: var(--color-base-100, #1f1b2d);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
-    }
-
-        #navbar-block-4.mobile-open .text-base-content {
-          gap: 0.25rem;
-          font-size: 1rem;
-        }
-
-        #navbar-block-4.mobile-open .nav-link {
-          display: block;
-          padding: 0.85rem 0.25rem;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        #navbar-block-4.mobile-open .nav-link:last-child {
-          border-bottom: none;
-        }
-
-        .mobile-menu-backdrop {
-          position: fixed;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.4);
-          z-index: 9;
-        }
-
-        header {
-    z-index: 9999 !important;
-  }
-      }
+    
 
       @media (max-width: 767px) {
         header .navbar {
@@ -1290,50 +1110,7 @@ flex-direction: column;
       
       <body>
         <div class="bg-base-100">
-          <!-- NAVBAR GIỮ Y NGUYÊN -->
-          <header class="border-base-content/20 bg-base-100 py-0.25 fixed top-0 z-10 w-full border-b">
-            <nav class="navbar mx-auto max-w-[1280px] rounded-b-xl px-4 sm:px-6 lg:px-8">
-              <div class="w-full lg:flex lg:items-center lg:gap-2">
-                <div class="navbar-start items-center justify-between max-lg:w-full">
-                  <a class="text-base-content flex items-center gap-2 font-semibold" href="index.html">
-                    <img
-                      src="assets/img/logo.png"
-                      alt="Grova Export"
-                      style="height: 110px; width: 320px; object-fit: contain; object-position: left center;" />
-                  </a>
-
-                  <div class="flex items-center gap-5 lg:hidden">
-                    <a href="index.html#contact-us" class="btn btn-success btn-sm">Request a Quote</a>
-                    <button
-                      id="mobileMenuToggle"
-                      type="button"
-                      class="collapse-toggle btn btn-outline btn-secondary btn-square"
-                      aria-controls="navbar-block-4"
-                      aria-expanded="false"
-                      aria-label="Toggle navigation">
-                      <span class="icon-[tabler--menu-2] collapse-open:hidden size-5.5"></span>
-                      <span class="icon-[tabler--x] collapse-open:block size-5.5 hidden"></span>
-                    </button>
-                  </div>
-                </div>
-
-                <div id="navbar-block-4" class="hidden grow overflow-hidden font-medium duration-300 lg:flex lg:navbar-center">
-                  <div class="text-base-content flex gap-6 text-xl max-lg:mt-4 max-lg:flex-col lg:items-center">
-                    <a href="index.html#home" class="hover:text-success nav-link">Home</a>
-                    <a href="index.html#about-us" class="hover:text-success nav-link">About Us</a>
-                    <a href="index.html#services" class="hover:text-success nav-link">Services</a>
-                    <a href="Products.html" class="text-success nav-link">Products</a>
-                    <a href="index.html#documents" class="hover:text-success nav-link">Documents</a>
-                    <a href="index.html#faqs" class="hover:text-success nav-link">FAQS</a>
-                  </div>
-                </div>
-
-                <div class="navbar-end max-lg:hidden">
-                  <a href="index.html#contact-us" class="btn btn-success">Request a Quote</a>
-                </div>
-              </div>
-            </nav>
-          </header>
+         <div id="navbar"></div>
 
           <main class="products-page">
       <section class="py-8 sm:py-10 lg:py-12">
@@ -1342,39 +1119,69 @@ flex-direction: column;
             <!-- LEFT -->
             <div class="detail-left">
       <div class="main-image-wrap">
-<img id="mainProductImage"
-     src="assets/img/kaya charcoal.png"
-     alt="Khaya Charcoal"
-     data-gallery-group="product"
-     style="cursor: pointer;" />
+<img
+  id="mainProductImage"
+  src="https://res.cloudinary.com/dzdcrka45/image/upload/f_auto,q_auto,w_1200/kaya_charcoal"
+  alt="Khaya Charcoal"
+  data-gallery-group="product"
+  style="cursor: pointer;"
+  fetchpriority="high"
+  decoding="async"
+/>
       </div>
 
       <div class="thumb-wrapper">
       <button class="thumb-arrow left" type="button">‹</button>
-      
       <div class="thumb-row">
-        <button class="thumb-btn active" type="button" data-image="assets/img/Kaya charcoal.png">
-          <img src="assets/img/kaya charcoal.png" alt="thumb 1">
-        </button>
-        <button class="thumb-btn" type="button" data-image="assets/img/Kaya (2).jpg">
-          <img src="assets/img/Kaya (2).jpg" alt="thumb 2">
-        </button>
-        <button class="thumb-btn" type="button" data-image="assets/img/Kaya (3).jpg">
-          <img src="assets/img/Kaya (3).jpg" alt="thumb 3">
-        </button>
-        <button class="thumb-btn" type="button" data-image="assets/img/Kaya (4).jpg">
-          <img src="assets/img/Kaya (4).jpg" alt="thumb 4">
-        </button>
-        <button class="thumb-btn" type="button" data-image="assets/img/Kaya (5).jpg">
-          <img src="assets/img/Kaya (5).jpg" alt="thumb 5">
-        </button>
-        <button class="thumb-btn" type="button" data-image="assets/img/Kaya (6).jpg">
-          <img src="assets/img/Kaya (6).jpg" alt="thumb 6">
-        </button>
-        <button class="thumb-btn" type="button" data-image="assets/img/Kaya (7).png">
-          <img src="assets/img/Kaya (7).png" alt="thumb 7">
-        </button>
-      </div>
+  <button
+    class="thumb-btn active"
+    type="button"
+    data-image="https://res.cloudinary.com/dzdcrka45/image/upload/f_auto,q_auto,w_1200/kaya_charcoal">
+    <img data-img="kaya_charcoal" data-size="w_300" alt="thumb 1" loading="lazy" decoding="async">
+  </button>
+
+  <button
+    class="thumb-btn"
+    type="button"
+    data-image="https://res.cloudinary.com/dzdcrka45/image/upload/f_auto,q_auto,w_1200/Kaya_2">
+    <img data-img="Kaya_2" data-size="w_300" alt="thumb 2" loading="lazy" decoding="async">
+  </button>
+
+  <button
+    class="thumb-btn"
+    type="button"
+    data-image="https://res.cloudinary.com/dzdcrka45/image/upload/f_auto,q_auto,w_1200/Kaya_3">
+    <img data-img="Kaya_3" data-size="w_300" alt="thumb 3" loading="lazy" decoding="async">
+  </button>
+
+  <button
+    class="thumb-btn"
+    type="button"
+    data-image="https://res.cloudinary.com/dzdcrka45/image/upload/f_auto,q_auto,w_1200/Kaya_4">
+    <img data-img="Kaya_4" data-size="w_300" alt="thumb 4" loading="lazy" decoding="async">
+  </button>
+
+  <button
+    class="thumb-btn"
+    type="button"
+    data-image="https://res.cloudinary.com/dzdcrka45/image/upload/f_auto,q_auto,w_1200/Kaya_5">
+    <img data-img="Kaya_5" data-size="w_300" alt="thumb 5" loading="lazy" decoding="async">
+  </button>
+
+  <button
+    class="thumb-btn"
+    type="button"
+    data-image="https://res.cloudinary.com/dzdcrka45/image/upload/f_auto,q_auto,w_1200/Kaya_6">
+    <img data-img="Kaya_6" data-size="w_300" alt="thumb 6" loading="lazy" decoding="async">
+  </button>
+
+  <button
+    class="thumb-btn"
+    type="button"
+    data-image="https://res.cloudinary.com/dzdcrka45/image/upload/f_auto,q_auto,w_1200/Kaya_7">
+    <img data-img="Kaya_7" data-size="w_300" alt="thumb 7" loading="lazy" decoding="async">
+  </button>
+</div>
 
       <button class="thumb-arrow right" type="button">›</button>
     </div>
@@ -1382,21 +1189,19 @@ flex-direction: column;
 
       <div class="feature-box">
         <div class="icon-box">
-          <img src="assets/img/heat.webp" alt="High heat">
-        </div>
+<img data-img="heat" data-size="w_120" alt="High heat" loading="lazy" decoding="async">        </div>
         <span>HIGH-HEAT</span>
       </div>
 
       <div class="feature-box">
         <div class="icon-box">
-          <img src="assets/img/coal.webp" alt="Smokeless">
+<img data-img="coal" data-size="w_120" alt="Smokeless" loading="lazy" decoding="async">
         </div>
         <span>SMOKELESS</span>
       </div>
       <div class="feature-box">
         <div class="icon-box">
-          <img src="assets/img/long burn.webp" alt="Long burning">
-        </div>
+<img data-img="long_burn" data-size="w_120" alt="Long burning" loading="lazy" decoding="async">        </div>
         <span>LONG</br>
           BURNING TIME</span>
       </div>
@@ -1481,9 +1286,13 @@ flex-direction: column;
 
     <!-- BLOCK 2: IMAGE -->
     <div>
-      <img src="assets/img/than xà cừ-test.jpg"
-           alt="Khaya wood raw material"
-           style="width:100%;border-radius:12px;">
+      <img
+  data-img="than_xà_cừ-test"
+  data-size="w_1200"
+  alt="Khaya wood raw material"
+  style="width:100%;border-radius:12px;"
+  loading="lazy"
+  decoding="async">
     </div>
 
     <!-- BLOCK 3: TEXT -->
@@ -1501,9 +1310,13 @@ flex-direction: column;
 
     <!-- BLOCK 4: IMAGE -->
     <div>
-      <img src="assets/img/than xà cừ-test(1).jpg"
-           alt="Khaya charcoal production"
-           style="width:100%;border-radius:12px;">
+      <img
+  data-img="than_xà_cừ-test_1"
+  data-size="w_1200"
+  alt="Khaya charcoal production"
+  style="width:100%;border-radius:12px;"
+  loading="lazy"
+  decoding="async">
     </div>
 
     <!-- BLOCK 5: SPEC INFO -->
@@ -1643,20 +1456,29 @@ flex-direction: column;
       display:grid;
       grid-template-columns:repeat(4,1fr);
       gap:16px;
-    ">
+    "><img data-img="kaya-Detail_1" data-size="w_800" class="zoom-gallery-img" data-gallery-group="gallery" alt="Khaya charcoal gallery 1" style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;" loading="lazy" decoding="async">
 
-      <img src="assets/img/kaya-Detail (1).jpg" class="zoom-gallery-img" data-gallery-group="gallery"style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;">
-      <img src="assets/img/kaya-Detail (2).jpg" class="zoom-gallery-img"data-gallery-group="gallery" style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;">
-      <img src="assets/img/kaya-Detail (3).jpg" class="zoom-gallery-img"data-gallery-group="gallery" style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;">
-      <img src="assets/img/kaya-Detail (4).jpg" class="zoom-gallery-img"data-gallery-group="gallery" style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;">
-      <img src="assets/img/kaya-Detail (5).jpg" class="zoom-gallery-img" data-gallery-group="gallery"style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;">
-      <img src="assets/img/kaya-Detail (6).jpg" class="zoom-gallery-img"data-gallery-group="gallery" style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;">
-      <img src="assets/img/kaya-Detail (7).jpg" class="zoom-gallery-img"data-gallery-group="gallery" style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;">
-      <img src="assets/img/kaya-Detail (8).jpg" class="zoom-gallery-img"data-gallery-group="gallery" style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;">
-      <img src="assets/img/kaya-Detail (9).jpg" class="zoom-gallery-img" data-gallery-group="gallery"style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;">
-      <img src="assets/img/kaya-Detail (10).jpg" class="zoom-gallery-img" data-gallery-group="gallery"style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;">
-      <img src="assets/img/Kaya (2).png" class="zoom-gallery-img"data-gallery-group="gallery" style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;">
-      <img src="assets/img/Khaya (1).png" class="zoom-gallery-img"data-gallery-group="gallery" style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;">
+<img data-img="kaya-Detail_2" data-size="w_800" class="zoom-gallery-img" data-gallery-group="gallery" alt="Khaya charcoal gallery 2" style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;" loading="lazy" decoding="async">
+
+<img data-img="kaya-Detail_3" data-size="w_800" class="zoom-gallery-img" data-gallery-group="gallery" alt="Khaya charcoal gallery 3" style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;" loading="lazy" decoding="async">
+
+<img data-img="kaya-Detail_4" data-size="w_800" class="zoom-gallery-img" data-gallery-group="gallery" alt="Khaya charcoal gallery 4" style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;" loading="lazy" decoding="async">
+
+<img data-img="kaya-Detail_5" data-size="w_800" class="zoom-gallery-img" data-gallery-group="gallery" alt="Khaya charcoal gallery 5" style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;" loading="lazy" decoding="async">
+
+<img data-img="kaya-Detail_6" data-size="w_800" class="zoom-gallery-img" data-gallery-group="gallery" alt="Khaya charcoal gallery 6" style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;" loading="lazy" decoding="async">
+
+<img data-img="kaya-Detail_7" data-size="w_800" class="zoom-gallery-img" data-gallery-group="gallery" alt="Khaya charcoal gallery 7" style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;" loading="lazy" decoding="async">
+
+<img data-img="kaya-Detail_8" data-size="w_800" class="zoom-gallery-img" data-gallery-group="gallery" alt="Khaya charcoal gallery 8" style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;" loading="lazy" decoding="async">
+
+<img data-img="kaya-Detail_9" data-size="w_800" class="zoom-gallery-img" data-gallery-group="gallery" alt="Khaya charcoal gallery 9" style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;" loading="lazy" decoding="async">
+
+<img data-img="kaya-Detail_10" data-size="w_800" class="zoom-gallery-img" data-gallery-group="gallery" alt="Khaya charcoal gallery 10" style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;" loading="lazy" decoding="async">
+
+<img data-img="Kaya_200" data-size="w_800" class="zoom-gallery-img" data-gallery-group="gallery" alt="Khaya charcoal gallery png 2" style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;" loading="lazy" decoding="async">
+
+<img data-img="Khaya_1" data-size="w_800" class="zoom-gallery-img" data-gallery-group="gallery" alt="Khaya charcoal gallery 1" style="width:100%;height:260px;object-fit:cover;border-radius:10px;cursor:pointer;" loading="lazy" decoding="async">
     </div>
   </section>
 
@@ -1672,28 +1494,22 @@ flex-direction: column;
   gap:20px;
 ">
       <div style="background:#fff;border:1px solid #ddd;border-radius:10px;padding:10px;">
-        <img src="assets/img/test-doc-1.jpg"         alt="Test document 1" class="test-doc-img" data-gallery-group="docs" data-gallery-group="docs" data-gallery-group="docs" data-gallery-group="docs" data-gallery-group="docs" data-gallery-group="docs" data-gallery-group="docs" data-gallery-group="docs" data-gallery-group="docs" data-gallery-group="docs" data-gallery-group="docs" data-gallery-group="docs" data-gallery-group="docs"  data-gallery-group="docs"  data-gallery-group="docs"  data-gallery-group="docs"  data-gallery-group="docs"  data-gallery-group="docs"  data-gallery-group="docs"  style="width:100%;height:420px;object-fit:contain;display:block;cursor:pointer;background:#fff;">
-      </div>
+<img data-img="test-doc-1" data-size="w_1000" alt="Test document 1" class="test-doc-img" data-gallery-group="docs" style="width:100%;height:420px;object-fit:contain;display:block;cursor:pointer;background:#fff;" loading="lazy" decoding="async">      </div>
 
       <div style="background:#fff;border:1px solid #ddd;border-radius:10px;padding:10px;">
-        <img src="assets/img/test-doc-2.jpg" alt="Test document 2" class="test-doc-img"data-gallery-group="docs" style="width:100%;height:420px;object-fit:contain;display:block;cursor:pointer;background:#fff;">
-      </div>
+<img data-img="test-doc-2" data-size="w_1000" alt="Test document 2" class="test-doc-img" data-gallery-group="docs" style="width:100%;height:420px;object-fit:contain;display:block;cursor:pointer;background:#fff;" loading="lazy" decoding="async">      </div>
 
       <div style="background:#fff;border:1px solid #ddd;border-radius:10px;padding:10px;">
-        <img src="assets/img/test-doc-3.jpg" alt="Test document 3" class="test-doc-img"data-gallery-group="docs" style="width:100%;height:420px;object-fit:contain;display:block;cursor:pointer;background:#fff;">
-      </div>
+<img data-img="test-doc-3" data-size="w_1000" alt="Test document 3" class="test-doc-img" data-gallery-group="docs" style="width:100%;height:420px;object-fit:contain;display:block;cursor:pointer;background:#fff;" loading="lazy" decoding="async">      </div>
 
       <div style="background:#fff;border:1px solid #ddd;border-radius:10px;padding:10px;">
-        <img src="assets/img/test-doc-4.jpg" alt="Test document 4" class="test-doc-img"data-gallery-group="docs" style="width:100%;height:420px;object-fit:contain;display:block;cursor:pointer;background:#fff;">
-      </div>
+<img data-img="test-doc-4" data-size="w_1000" alt="Test document 4" class="test-doc-img" data-gallery-group="docs" style="width:100%;height:420px;object-fit:contain;display:block;cursor:pointer;background:#fff;" loading="lazy" decoding="async">      </div>
 
       <div style="background:#fff;border:1px solid #ddd;border-radius:10px;padding:10px;">
-        <img src="assets/img/test-doc-5.jpg" alt="Test document 5" class="test-doc-img" data-gallery-group="docs"style="width:100%;height:420px;object-fit:contain;display:block;cursor:pointer;background:#fff;">
-      </div>
+<img data-img="test-doc-5" data-size="w_1000" alt="Test document 5" class="test-doc-img" data-gallery-group="docs" style="width:100%;height:420px;object-fit:contain;display:block;cursor:pointer;background:#fff;" loading="lazy" decoding="async">      </div>
 
       <div style="background:#fff;border:1px solid #ddd;border-radius:10px;padding:10px;">
-        <img src="assets/img/test-doc-6.jpg" alt="Test document 6" class="test-doc-img"data-gallery-group="docs" style="width:100%;height:420px;object-fit:contain;display:block;cursor:pointer;background:#fff;">
-      </div>
+<img data-img="test-doc-6" data-size="w_1000" alt="Test document 6" class="test-doc-img" data-gallery-group="docs" style="width:100%;height:420px;object-fit:contain;display:block;cursor:pointer;background:#fff;" loading="lazy" decoding="async">      </div>
     </div>
   </section>
   <!-- ===== END GALLERY ===== -->
@@ -1701,7 +1517,7 @@ flex-direction: column;
 
           <div class="related-grid">
             <article class="related-card">
-              <img src="assets/img/white-charcoal.png" alt="White Charcoal">
+<img data-img="white-charcoal" data-size="w_600" alt="White Charcoal" loading="lazy" decoding="async">
               <div class="related-card-body">
                 <h3>White Charcoal</h3>
                 <a href="Products.html">Read more</a>
@@ -1709,26 +1525,25 @@ flex-direction: column;
             </article>
 
             <article class="related-card">
-              <img src="assets/img/Kaya charcoal.png" alt="Khaya charcoal">
+<img data-img="kaya_charcoal" data-size="w_600" alt="Khaya charcoal" loading="lazy" decoding="async">
               <div class="related-card-body">
                 <h3>Khaya charcoal</h3>
-                <a href="Products.html">Read more</a>
+                <a href="Kaya-Charcoal.html">Read more</a>
               </div>
             </article>
 
             <article class="related-card">
-              <img src="assets/img/coffee charcoal.png" alt="Coffee Wood Charcoal">
+<img data-img="coffee_charcoal" data-size="w_600" alt="Coffee Wood Charcoal" loading="lazy" decoding="async">
               <div class="related-card-body">
                 <h3>Coffee Charcoal</h3>
-                <a href="Products.html">Read more</a>
+                <a href="Coffee-Charcoal.html">Read more</a>
               </div>
             </article>
 
             <article class="related-card">
-              <img src="assets/img/Eucalyptus charcoal.png" alt="Eucalyptus Charcoal">
-              <div class="related-card-body">
+<img data-img="Eucalyptus_charcoal" data-size="w_600" alt="Eucalyptus Charcoal" loading="lazy" decoding="async">              <div class="related-card-body">
                 <h3>Eucalyptus Charcoal</h3>
-                <a href="Products.html">Read more</a>
+                <a href="Eucalyptus-Charcoal.html">Read more</a>
               </div>
             </article>
           </div>
@@ -2164,7 +1979,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
-</script>
 <div id="footer"></div>
 
 <script>
@@ -2179,6 +1993,12 @@ fetch('footer.html')
     }
   });
 </script>
+<script src="assets/dist/libs/tailwindcss-intersect/dist/observer.min.js"></script>
+<script src="assets/dist/libs/flatpickr/dist/flatpickr.js"></script>
+<script src="assets/dist/libs/flyonui/flyonui.js"></script>
+<script src="assets/dist/js/theme-utils.js"></script>
+<script src="assets/dist/js/main.js"></script>
 
-      </body>
-    </html>
+  </div>
+</body>
+</html>

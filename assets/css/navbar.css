@@ -1,0 +1,124 @@
+header {
+  z-index: 9999 !important;
+}
+
+.mobile-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 9;
+}
+
+@media (max-width: 1023px) {
+  header .navbar {
+    min-height: 88px;
+    align-items: center;
+  }
+
+  header .navbar-start {
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  header .navbar-start > a {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  header .navbar-start > a img {
+    width: 100% !important;
+    max-width: 220px;
+    height: 72px !important;
+    object-fit: contain !important;
+    object-position: left center !important;
+    display: block;
+  }
+
+  header .navbar-start .lg\:hidden {
+    flex: 0 0 auto;
+    gap: 0.5rem;
+  }
+
+  header .navbar-start .btn-success.btn-sm {
+    white-space: nowrap;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  #navbar-block-4 {
+    width: 100%;
+  }
+
+  #navbar-block-4.mobile-open {
+    display: block !important;
+    position: relative;
+    z-index: 50;
+    width: 100%;
+    height: auto !important;
+    overflow: visible !important;
+    margin-top: 0.75rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--color-base-100, #1f1b2d);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+  }
+
+  #navbar-block-4.mobile-open .text-base-content {
+    gap: 0.25rem;
+    font-size: 1rem;
+  }
+
+  #navbar-block-4.mobile-open .nav-link {
+    display: block;
+    padding: 0.85rem 0.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  #navbar-block-4.mobile-open .nav-link:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 767px) {
+  header .navbar {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  header .navbar-start {
+    align-items: flex-start;
+  }
+
+  header .navbar-start > a img {
+    max-width: 150px;
+    height: 54px !important;
+  }
+
+  header .navbar-start .btn-success.btn-sm {
+    font-size: 0.75rem;
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+    height: 2.25rem;
+  }
+
+  .collapse-toggle {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    flex: 0 0 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header .navbar-start > a img {
+    max-width: 120px;
+    height: 48px !important;
+  }
+
+  header .navbar-start .btn-success.btn-sm {
+    font-size: 0.7rem;
+    padding-left: 0.55rem;
+    padding-right: 0.55rem;
+  }
+}

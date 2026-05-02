@@ -19,112 +19,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="assets/dist/libs/flatpickr/dist/flatpickr.css" />
     <link rel="stylesheet" href="assets/dist/css/output.css" />
-    <script src="assets/js/site-config.js"></script>
-    <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const toggleBtn = document.getElementById('mobileMenuToggle');
-    const menu = document.getElementById('navbar-block-4');
+<link rel="stylesheet" href="assets/css/navbar.css" />
 
-    if (toggleBtn && menu) {
-      let backdrop = null;
-      const isMobile = () => window.innerWidth < 1024;
-
-      function syncIcons(open) {
-        const icons = toggleBtn.querySelectorAll('span');
-        if (icons.length >= 2) {
-          icons[0].classList.toggle('hidden', open);
-          icons[1].classList.toggle('hidden', !open);
-        }
-        toggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      }
-
-      function closeMenu() {
-        menu.classList.remove('mobile-open');
-        if (isMobile()) {
-          menu.classList.add('hidden');
-          document.body.style.overflow = '';
-        }
-        if (backdrop) {
-          backdrop.remove();
-          backdrop = null;
-        }
-        syncIcons(false);
-      }
-
-      function openMenu() {
-        if (!isMobile()) return;
-        menu.classList.remove('hidden');
-        menu.classList.add('mobile-open');
-        document.body.style.overflow = 'hidden';
-        if (!backdrop) {
-          backdrop = document.createElement('div');
-          backdrop.className = 'mobile-menu-backdrop';
-          backdrop.addEventListener('click', closeMenu);
-          document.body.appendChild(backdrop);
-        }
-        syncIcons(true);
-      }
-
-      toggleBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        const isOpen = menu.classList.contains('mobile-open');
-        if (isOpen) closeMenu();
-        else openMenu();
-      });
-
-      menu.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', function () {
-          if (isMobile()) closeMenu();
-        });
-      });
-
-      window.addEventListener('resize', function () {
-        if (!isMobile()) {
-          menu.classList.remove('hidden', 'mobile-open');
-          document.body.style.overflow = '';
-          if (backdrop) {
-            backdrop.remove();
-            backdrop = null;
-          }
-          syncIcons(false);
-        } else if (!menu.classList.contains('mobile-open')) {
-          menu.classList.add('hidden');
-          syncIcons(false);
-        }
-      });
-
-      if (isMobile()) {
-        menu.classList.add('hidden');
-        syncIcons(false);
-      }
-    }
-
-    const categoryButtons = document.querySelectorAll('.category-btn');
-    const productCards = document.querySelectorAll('.product-card');
-
-    categoryButtons.forEach(function (button) {
-      button.addEventListener('click', function () {
-        const filter = button.getAttribute('data-filter');
-
-        categoryButtons.forEach(function (btn) {
-          btn.classList.remove('is-active');
-        });
-
-        button.classList.add('is-active');
-
-        productCards.forEach(function (card) {
-          const category = card.getAttribute('data-category');
-          if (filter === 'all' || category === filter) {
-            card.style.display = '';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-  });
-</script>
+<script src="assets/js/site-config.js"></script>
+<script src="assets/js/navbar.js"></script>
 
     <style>
          html {
@@ -523,53 +421,10 @@
   </head>
 
   <body>
-    <div class="bg-base-100">
-      <!-- NAVBAR GIỮ Y NGUYÊN -->
-      <header class="border-base-content/20 bg-base-100 py-0.25 fixed top-0 z-10 w-full border-b">
-        <nav class="navbar mx-auto max-w-[1280px] rounded-b-xl px-4 sm:px-6 lg:px-8">
-          <div class="w-full lg:flex lg:items-center lg:gap-2">
-            <div class="navbar-start items-center justify-between max-lg:w-full">
-              <a class="text-base-content flex items-center gap-2 font-semibold" href="index.html">
-                <img
-                  src="assets/img/logo.png"
-                  alt="Grova Export"
-                  style="height: 110px; width: 320px; object-fit: contain; object-position: left center;" />
-              </a>
+  <div class="bg-base-100">
+    <div id="navbar"></div>
 
-              <div class="flex items-center gap-5 lg:hidden">
-                <a href="index.html#contact-us" class="btn btn-success btn-sm">Request a Quote</a>
-                <button
-                  id="mobileMenuToggle"
-                  type="button"
-                  class="collapse-toggle btn btn-outline btn-secondary btn-square"
-                  aria-controls="navbar-block-4"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation">
-                  <span class="icon-[tabler--menu-2] collapse-open:hidden size-5.5"></span>
-                  <span class="icon-[tabler--x] collapse-open:block size-5.5 hidden"></span>
-                </button>
-              </div>
-            </div>
-
-            <div id="navbar-block-4" class="hidden grow overflow-hidden font-medium duration-300 lg:flex lg:navbar-center">
-              <div class="text-base-content flex gap-6 text-xl max-lg:mt-4 max-lg:flex-col lg:items-center">
-                <a href="index.html#home" class="hover:text-success nav-link">Home</a>
-                <a href="index.html#about-us" class="hover:text-success nav-link">About Us</a>
-                <a href="index.html#services" class="hover:text-success nav-link">Services</a>
-                <a href="Products.html" class="text-success nav-link">Products</a>
-                <a href="index.html#documents" class="hover:text-success nav-link">Documents</a>
-                <a href="index.html#faqs" class="hover:text-success nav-link">FAQS</a>
-              </div>
-            </div>
-
-            <div class="navbar-end max-lg:hidden">
-              <a href="index.html#contact-us" class="btn btn-success">Request a Quote</a>
-            </div>
-          </div>
-        </nav>
-      </header>
-
-  <main class="products-page">
+    <main class="products-page">
   <section class="py-8 sm:py-12 lg:py-16">
     <div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
       <div class="products-wrap">
@@ -809,13 +664,12 @@ fetch('footer.html')
     }
   });
 </script>
+<script src="assets/dist/libs/tailwindcss-intersect/dist/observer.min.js"></script>
+<script src="assets/dist/libs/flatpickr/dist/flatpickr.js"></script>
+<script src="assets/dist/libs/flyonui/flyonui.js"></script>
+<script src="assets/dist/js/theme-utils.js"></script>
+<script src="assets/dist/js/main.js"></script>
 
-    <script src="assets/dist/libs/tailwindcss-intersect/dist/observer.min.js"></script>
-    <script src="assets/dist/libs/flatpickr/dist/flatpickr.js"></script>
-    <script src="assets/dist/libs/flyonui/flyonui.js"></script>
-    <script src="assets/dist/js/theme-utils.js"></script>
-    <script src="assets/dist/js/main.js"></script>
-
-
-  </body>
+  </div>
+</body>
 </html>
