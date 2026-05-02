@@ -89,17 +89,20 @@ window.initNavbar = function () {
     menu.classList.add("hidden");
     syncIcons(false);
   }
+setActiveNavbarLink();
+initScrollSpyNavbar();
 
-  setActiveNavbarLink();
+window.addEventListener("hashchange", setActiveNavbarLink);
+
+document.querySelectorAll(".nav-link").forEach(function (link) {
+  link.addEventListener("click", function () {
+    setTimeout(setActiveNavbarLink, 50);
+  });
+});
 };
-
 function setActiveNavbarLink() {
   const path = window.location.pathname.toLowerCase();
   const hash = window.location.hash;
-
-  document.querySelectorAll(".nav-link").forEach(function (link) {
-    link.classList.remove("text-success", "active", "current-page");
-  });
 
   const isProductPage =
     path.includes("products") ||
@@ -107,23 +110,88 @@ function setActiveNavbarLink() {
     path.includes("briquettes");
 
   if (isProductPage) {
-    const productsLink = document.querySelector('[data-nav="products"]');
-    if (productsLink) {
-      productsLink.classList.add("text-success");
-      productsLink.classList.remove("hover:text-success");
-    }
+    activateNav("products");
     return;
   }
 
-  if (hash) {
-    const current = document.querySelector(`.nav-link[href$="${hash}"]`);
-    if (current) {
-      current.classList.add("text-success");
-    }
-  } else {
-    const homeLink = document.querySelector('[data-nav="home"]');
-    if (homeLink) {
-      homeLink.classList.add("text-success");
-    }
+  if (hash === "#about-us") {
+    activateNav("about");
+    return;
   }
+
+  if (hash === "#services") {
+    activateNav("services");
+    return;
+  }
+
+  if (hash === "#documents") {
+    activateNav("documents");
+    return;
+  }
+
+  if (hash === "#faqs") {
+    activateNav("faqs");
+    return;
+  }
+
+  activateNav("home");
+}
+function activateNav(navName) {
+  document.querySelectorAll(".nav-link").forEach(function (link) {
+    link.classList.remove("text-success", "active", "current-page");
+    link.classList.add("hover:text-success");
+  });
+
+  const activeLink = document.querySelector(`[data-nav="${navName}"]`);
+
+  if (activeLink) {
+    activeLink.classList.add("text-success");
+    activeLink.classList.remove("hover:text-success");
+  }
+}
+
+function initScrollSpyNavbar() {
+  const path = window.location.pathname.toLowerCase();
+
+  const isProductPage =
+    path.includes("products") ||
+    path.includes("charcoal") ||
+    path.includes("briquettes");
+
+  if (isProductPage) {
+    activateNav("products");
+    return;
+  }
+
+  const sections = [
+    { id: "home", nav: "home" },
+    { id: "about-us", nav: "about" },
+    { id: "services", nav: "services" },
+    { id: "documents", nav: "documents" },
+    { id: "faqs", nav: "faqs" }
+  ];
+
+  function updateActiveByScroll() {
+    let currentNav = "home";
+    const offset = 180;
+
+    sections.forEach(function (item) {
+      const section = document.getElementById(item.id);
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+
+      if (rect.top <= offset) {
+        currentNav = item.nav;
+      }
+    });
+
+    activateNav(currentNav);
+  }
+
+  updateActiveByScroll();
+
+  window.addEventListener("scroll", function () {
+    requestAnimationFrame(updateActiveByScroll);
+  });
 }
