@@ -5,7 +5,7 @@ services:
     buildCommand: npm run build
     staticPublishPath: .
     routes:
-      # Redirect .html to clean URLs
+      # Redirect .html URLs to clean URLs
       - type: redirect
         source: /Products.html
         destination: /Products
@@ -42,7 +42,7 @@ services:
         source: /Longan-Charcoal.html
         destination: /Longan-Charcoal
 
-      # Rewrite clean URLs to real HTML files
+      # Rewrite clean URLs to actual HTML files
       - type: rewrite
         source: /Products
         destination: /Products.html
