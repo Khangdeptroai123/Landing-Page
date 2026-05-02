@@ -17,29 +17,15 @@ window.getImageUrl = function (path, options = "") {
 
   return config.imageBaseUrl + path;
 };
+
 window.loadCloudinaryImages = function (root = document) {
-  root.querySelectorAll("img[data-img]").forEach(function (img) {
+  root.querySelectorAll("[data-img]").forEach(function (img) {
     const path = img.getAttribute("data-img");
     const size = img.getAttribute("data-size") || "";
 
     if (!path) return;
 
-    const finalSrc = window.getImageUrl(path, size);
-
-    if (img.getAttribute("src") === finalSrc) return;
-
-    if (!img.hasAttribute("decoding")) {
-      img.setAttribute("decoding", "async");
-    }
-
-    if (
-      !img.hasAttribute("loading") &&
-      img.getAttribute("fetchpriority") !== "high"
-    ) {
-      img.setAttribute("loading", "lazy");
-    }
-
-    img.src = finalSrc;
+    img.src = window.getImageUrl(path, size);
   });
 };
 
