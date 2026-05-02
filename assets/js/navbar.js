@@ -149,6 +149,7 @@ function loadNavbar() {
       if (!navbar) return;
 
       navbar.innerHTML = html;
+navbar.classList.add("is-loaded");
 
       if (window.loadCloudinaryImages) {
         window.loadCloudinaryImages(navbar);
