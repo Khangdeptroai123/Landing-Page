@@ -133,9 +133,11 @@
     display: flex;
     flex-direction: column;
     gap: 14px;
-    z-index: 999;
+    z-index: 50;
   }
-
+.thumb-arrow {
+  z-index: 80;
+}
   .floating-contact a {
     width: 58px;
     height: 58px;

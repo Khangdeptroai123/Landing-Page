@@ -1,12 +1,7 @@
-header {
-  z-index: 9999 !important;
-}
-
-.mobile-menu-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 9;
+.nav-link.active,
+.nav-link.current-page,
+.nav-link.text-success {
+  color: #22c55e !important;
 }
 
 @media (max-width: 1023px) {
@@ -53,7 +48,7 @@ header {
   #navbar-block-4.mobile-open {
     display: block !important;
     position: relative;
-    z-index: 50;
+    z-index: 999 !important;
     width: 100%;
     height: auto !important;
     overflow: visible !important;
@@ -69,9 +64,7 @@ header {
     gap: 0.25rem;
     font-size: 1rem;
   }
-  .nav-link.is-active {
-  color: #22c55e !important;
-}
+
   #navbar-block-4.mobile-open .nav-link {
     display: block;
     padding: 0.85rem 0.25rem;
@@ -80,6 +73,21 @@ header {
 
   #navbar-block-4.mobile-open .nav-link:last-child {
     border-bottom: none;
+  }
+
+  .mobile-menu-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 9;
+  }
+
+  header {
+    z-index: 1000 !important;
+  }
+
+  .thumb-arrow {
+    z-index: 1 !important;
   }
 }
 
@@ -123,4 +131,43 @@ header {
     padding-left: 0.55rem;
     padding-right: 0.55rem;
   }
+}
+#navbar {
+  position: relative;
+  z-index: 9999;
+}
+/* Navbar cao nhất */
+#navbar,
+#navbar header {
+  z-index: 9999 !important;
+}
+
+/* Footer floating contact thấp hơn navbar */
+.floating-contact {
+  z-index: 50 !important;
+}
+
+/* Nút gallery cao hơn bong bóng contact */
+.thumb-arrow {
+  z-index: 80 !important;
+}
+
+/* Lightbox vẫn cao nhất khi mở ảnh */
+#galleryLightbox {
+  z-index: 99999 !important;
+}
+#navbar header {
+  z-index: 9999 !important;
+}
+
+.thumb-arrow {
+  z-index: 1 !important;
+}
+
+#navbar-block-4.mobile-open {
+  z-index: 10000 !important;
+}
+
+.mobile-menu-backdrop {
+  z-index: 9998 !important;
 }
