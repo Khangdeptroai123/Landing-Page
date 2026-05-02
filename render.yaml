@@ -5,6 +5,44 @@ services:
     buildCommand: npm run build
     staticPublishPath: .
     routes:
+      # Redirect .html to clean URLs
+      - type: redirect
+        source: /Products.html
+        destination: /Products
+
+      - type: redirect
+        source: /Mangrove-Charcoal.html
+        destination: /Mangrove-Charcoal
+
+      - type: redirect
+        source: /Mangrove-Briquettes.html
+        destination: /Mangrove-Briquettes
+
+      - type: redirect
+        source: /Coconut-Charcoal.html
+        destination: /Coconut-Charcoal
+
+      - type: redirect
+        source: /Coconut-Briquettes.html
+        destination: /Coconut-Briquettes
+
+      - type: redirect
+        source: /Coffee-Charcoal.html
+        destination: /Coffee-Charcoal
+
+      - type: redirect
+        source: /Eucalyptus-Charcoal.html
+        destination: /Eucalyptus-Charcoal
+
+      - type: redirect
+        source: /Kaya-Charcoal.html
+        destination: /Kaya-Charcoal
+
+      - type: redirect
+        source: /Longan-Charcoal.html
+        destination: /Longan-Charcoal
+
+      # Rewrite clean URLs to real HTML files
       - type: rewrite
         source: /Products
         destination: /Products.html
