@@ -19,13 +19,44 @@ window.getImageUrl = function (path, options = "") {
 };
 
 window.loadCloudinaryImages = function (root = document) {
-  root.querySelectorAll("[data-img]").forEach(function (img) {
+  root.querySelectorAll("img[data-img]").forEach(function (img) {
     const path = img.getAttribute("data-img");
-    const size = img.getAttribute("data-size") || "";
+    const size = img.getAttribute("data-size") || "w_800";
 
     if (!path) return;
 
-    img.src = window.getImageUrl(path, size);
+    const finalSrc = window.getImageUrl(path, size);
+
+    if (img.getAttribute("src") === finalSrc) return;
+
+    if (!img.hasAttribute("decoding")) {
+      img.setAttribute("decoding", "async");
+    }
+
+    if (
+      !img.hasAttribute("loading") &&
+      img.getAttribute("fetchpriority") !== "high"
+    ) {
+      img.setAttribute("loading", "lazy");
+    }
+
+    // Responsive srcset cho ảnh Cloudinary
+    if (!img.hasAttribute("srcset") && window.SITE_CONFIG.useCdnImages) {
+      img.setAttribute(
+        "srcset",
+        [
+          `${window.getImageUrl(path, "w_400,f_auto,q_auto")} 400w`,
+          `${window.getImageUrl(path, "w_800,f_auto,q_auto")} 800w`,
+          `${window.getImageUrl(path, "w_1200,f_auto,q_auto")} 1200w`
+        ].join(", ")
+      );
+
+      if (!img.hasAttribute("sizes")) {
+        img.setAttribute("sizes", "(max-width: 768px) 100vw, 50vw");
+      }
+    }
+
+    img.src = finalSrc;
   });
 };
 
