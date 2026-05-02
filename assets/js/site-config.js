@@ -18,10 +18,17 @@ window.getImageUrl = function (path, options = "") {
   return config.imageBaseUrl + path;
 };
 
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll("[data-img]").forEach(function (img) {
+window.loadCloudinaryImages = function (root = document) {
+  root.querySelectorAll("[data-img]").forEach(function (img) {
     const path = img.getAttribute("data-img");
     const size = img.getAttribute("data-size") || "";
-    img.src = getImageUrl(path, size);
+
+    if (!path) return;
+
+    img.src = window.getImageUrl(path, size);
   });
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+  window.loadCloudinaryImages();
 });

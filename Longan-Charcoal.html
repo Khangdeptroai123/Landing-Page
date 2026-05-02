@@ -2078,7 +2078,12 @@ document.addEventListener('DOMContentLoaded', function () {
 fetch('footer.html')
   .then(res => res.text())
   .then(data => {
-    document.getElementById('footer').innerHTML = data;
+    const footer = document.getElementById('footer');
+    footer.innerHTML = data;
+
+    if (window.loadCloudinaryImages) {
+      window.loadCloudinaryImages(footer);
+    }
   });
 </script>
       </body>
